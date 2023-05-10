@@ -1,0 +1,2769 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>RitterManager Tutorial</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">RitterManager Tutorial</h1>
+<p class="subtitle">Tutorial für Neueinsteiger und Referenz für
+erfahrene Rittermanager</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#willkommen-beim-rittermanager-tutorial"
+id="toc-willkommen-beim-rittermanager-tutorial">Willkommen beim
+RitterManager Tutorial</a>
+<ul>
+<li><a href="#was-ist-rittermanager" id="toc-was-ist-rittermanager">Was
+ist RitterManager?</a></li>
+<li><a href="#ritter-erstellen" id="toc-ritter-erstellen">Ritter
+erstellen</a></li>
+<li><a href="#ritter-mit-deinem-amazon-konto-verknüpfen"
+id="toc-ritter-mit-deinem-amazon-konto-verknüpfen">Ritter mit deinem
+Amazon-Konto verknüpfen</a></li>
+</ul></li>
+<li><a href="#grundlagen" id="toc-grundlagen">Grundlagen</a>
+<ul>
+<li><a href="#eigenschaften-deines-ritters"
+id="toc-eigenschaften-deines-ritters">Eigenschaften deines Ritters</a>
+<ul>
+<li><a href="#kampfeigenschaften"
+id="toc-kampfeigenschaften">Kampfeigenschaften</a></li>
+<li><a href="#jagdeigenschaften"
+id="toc-jagdeigenschaften">Jagdeigenschaften</a></li>
+<li><a href="#besondere-fähigkeiten"
+id="toc-besondere-fähigkeiten">Besondere Fähigkeiten</a></li>
+<li><a href="#bonuseigenschaften"
+id="toc-bonuseigenschaften">Bonuseigenschaften</a></li>
+<li><a href="#kampfklasse" id="toc-kampfklasse">Kampfklasse</a></li>
+</ul></li>
+<li><a href="#weitere-wichtige-bausteine"
+id="toc-weitere-wichtige-bausteine">Weitere wichtige Bausteine</a>
+<ul>
+<li><a href="#saisons" id="toc-saisons">Saisons</a></li>
+<li><a href="#rangliste" id="toc-rangliste">Rangliste</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#zentrale-spielelemente"
+id="toc-zentrale-spielelemente">Zentrale Spielelemente</a>
+<ul>
+<li><a href="#abenteuer" id="toc-abenteuer">Abenteuer</a>
+<ul>
+<li><a href="#prestige-modus"
+id="toc-prestige-modus">Prestige-Modus</a></li>
+</ul></li>
+<li><a href="#kampf" id="toc-kampf">Kampf</a>
+<ul>
+<li><a href="#aufbau-eines-kampfes" id="toc-aufbau-eines-kampfes">Aufbau
+eines Kampfes</a></li>
+<li><a href="#geschenke-des-königs"
+id="toc-geschenke-des-königs">Geschenke des Königs</a></li>
+<li><a href="#kampfmodi" id="toc-kampfmodi">Kampfmodi</a></li>
+<li><a href="#schnellkampf" id="toc-schnellkampf">Schnellkampf</a></li>
+<li><a href="#automatischer-kampf"
+id="toc-automatischer-kampf">Automatischer Kampf</a></li>
+</ul></li>
+<li><a href="#schmied" id="toc-schmied">Schmied</a></li>
+<li><a href="#shop" id="toc-shop">Shop</a>
+<ul>
+<li><a href="#kampffähigkeiten"
+id="toc-kampffähigkeiten">Kampffähigkeiten</a></li>
+<li><a href="#kampf-bonuseigenschaften"
+id="toc-kampf-bonuseigenschaften">Kampf-Bonuseigenschaften</a></li>
+</ul></li>
+<li><a href="#spielersuche" id="toc-spielersuche">Spielersuche</a></li>
+<li><a href="#tag-team" id="toc-tag-team">Tag-Team</a></li>
+<li><a href="#rucksack" id="toc-rucksack">Rucksack</a>
+<ul>
+<li><a href="#besonderheiten-bei-der-nahrung"
+id="toc-besonderheiten-bei-der-nahrung">Besonderheiten bei der
+Nahrung</a></li>
+</ul></li>
+<li><a href="#schlossgarten"
+id="toc-schlossgarten">Schlossgarten</a></li>
+<li><a href="#ritterspiele" id="toc-ritterspiele">Ritterspiele</a>
+<ul>
+<li><a href="#siegerehrung" id="toc-siegerehrung">Siegerehrung</a></li>
+</ul></li>
+<li><a href="#jahrmarkt" id="toc-jahrmarkt">Jahrmarkt</a></li>
+<li><a href="#düsterwald" id="toc-düsterwald">Düsterwald</a>
+<ul>
+<li><a href="#der-ork-hauptmann" id="toc-der-ork-hauptmann">Der
+Ork-Hauptmann</a></li>
+<li><a href="#lebenspunkte-im-wald"
+id="toc-lebenspunkte-im-wald">Lebenspunkte im Wald</a></li>
+<li><a href="#ritter-heilen" id="toc-ritter-heilen">Ritter
+heilen</a></li>
+<li><a href="#die-nacht-im-düsterwald"
+id="toc-die-nacht-im-düsterwald">Die Nacht im Düsterwald</a></li>
+<li><a href="#ork-plagen" id="toc-ork-plagen">Ork-Plagen</a></li>
+<li><a href="#wolfsjagd" id="toc-wolfsjagd">Wolfsjagd</a></li>
+<li><a href="#jagdturniere" id="toc-jagdturniere">Jagdturniere</a></li>
+<li><a href="#übersicht-aller-kreaturen-im-düsterwald"
+id="toc-übersicht-aller-kreaturen-im-düsterwald">Übersicht aller
+Kreaturen im Düsterwald</a></li>
+</ul></li>
+<li><a href="#taverne" id="toc-taverne">Taverne</a>
+<ul>
+<li><a href="#theke" id="toc-theke">Theke</a></li>
+<li><a href="#karten-spielen" id="toc-karten-spielen">Karten
+spielen</a></li>
+</ul></li>
+<li><a href="#schwarzer-turm" id="toc-schwarzer-turm">Schwarzer Turm</a>
+<ul>
+<li><a href="#angriff-auf-das-königreich"
+id="toc-angriff-auf-das-königreich">Angriff auf das Königreich</a></li>
+</ul></li>
+<li><a href="#pfeilwerkstatt"
+id="toc-pfeilwerkstatt">Pfeilwerkstatt</a></li>
+<li><a href="#jagdhütte" id="toc-jagdhütte">Jagdhütte</a>
+<ul>
+<li><a href="#jagdfähigkeiten"
+id="toc-jagdfähigkeiten">Jagdfähigkeiten</a></li>
+<li><a href="#jagd-bonuseigenschaften"
+id="toc-jagd-bonuseigenschaften">Jagd-Bonuseigenschaften</a></li>
+</ul></li>
+<li><a href="#briefkasten" id="toc-briefkasten">Briefkasten</a>
+<ul>
+<li><a href="#geschenke-senden" id="toc-geschenke-senden">Geschenke
+senden</a></li>
+<li><a href="#briefe-schreiben" id="toc-briefe-schreiben">Briefe
+schreiben</a></li>
+</ul></li>
+<li><a href="#handel" id="toc-handel">Handel</a>
+<ul>
+<li><a href="#handel-vorschlagen" id="toc-handel-vorschlagen">Handel
+vorschlagen</a></li>
+<li><a href="#marktplatz" id="toc-marktplatz">Marktplatz</a></li>
+</ul></li>
+<li><a href="#kampfturniere" id="toc-kampfturniere">Kampfturniere</a>
+<ul>
+<li><a href="#siegerehrung-1"
+id="toc-siegerehrung-1">Siegerehrung</a></li>
+</ul></li>
+<li><a href="#orden" id="toc-orden">Orden</a>
+<ul>
+<li><a href="#besondere-leistungen-für-mehr-ordenspunkte"
+id="toc-besondere-leistungen-für-mehr-ordenspunkte">Besondere Leistungen
+für mehr Ordenspunkte</a></li>
+<li><a href="#ordenshalle-und-upgrades"
+id="toc-ordenshalle-und-upgrades">Ordenshalle und Upgrades</a></li>
+<li><a href="#saisonwechsel"
+id="toc-saisonwechsel">Saisonwechsel</a></li>
+</ul></li>
+<li><a href="#provinzkampf" id="toc-provinzkampf">Provinzkampf</a>
+<ul>
+<li><a href="#ablauf-des-provinzkampfs"
+id="toc-ablauf-des-provinzkampfs">Ablauf des Provinzkampfs</a></li>
+<li><a href="#siegerehrung-2"
+id="toc-siegerehrung-2">Siegerehrung</a></li>
+</ul></li>
+<li><a href="#arbeitskammer" id="toc-arbeitskammer">Arbeitskammer</a>
+<ul>
+<li><a href="#baupläne" id="toc-baupläne">Baupläne</a></li>
+<li><a href="#rezepte" id="toc-rezepte">Rezepte</a></li>
+</ul></li>
+<li><a href="#drachenfels" id="toc-drachenfels">Drachenfels</a>
+<ul>
+<li><a href="#bergspitze" id="toc-bergspitze">Bergspitze</a></li>
+<li><a href="#drachenhöhle" id="toc-drachenhöhle">Drachenhöhle</a></li>
+<li><a href="#drachennest-und-drachenaufzucht"
+id="toc-drachennest-und-drachenaufzucht">Drachennest und
+Drachenaufzucht</a></li>
+</ul></li>
+<li><a href="#schloss" id="toc-schloss">Schloss</a></li>
+</ul></li>
+<li><a href="#regelmäßige-veranstaltungen-im-spiel"
+id="toc-regelmäßige-veranstaltungen-im-spiel">Regelmäßige
+Veranstaltungen im Spiel</a></li>
+<li><a href="#übersicht-aller-gegenstände"
+id="toc-übersicht-aller-gegenstände">Übersicht aller
+Gegenstände</a></li>
+</ul>
+</nav>
+<h1 id="willkommen-beim-rittermanager-tutorial">Willkommen beim
+RitterManager Tutorial</h1>
+<p>Dieses Tutorial soll Einsteigern den Einstieg in die Welt von
+RitterManager erleichtern. Das Tutorial kann entweder als
+Schritt-für-Schritt-Anleitung zum Spiel oder als Referenz für
+spielbezogene Dinge verwendet werden.<br />
+Um schnell einen Abschnitt auszuwählen, verwende das Inhaltsverzeichnis
+oben auf dieser Seite.</p>
+<h2 id="was-ist-rittermanager">Was ist RitterManager?</h2>
+<p>RitterManager ist ein audiobasiertes Spiel für Amazon Alexa-Geräte.
+Das Spiel wird ausschließlich über Sprachbefehle gesteuert. Die
+Interaktion läuft dabei stets mit deinem Echo-Gerät und dem
+RitterManager Alexa-Skill. Begleitend zum Spiel gibt es auch eine
+[Webseite[(https://www.knight-manager.com/), auf der du dich über deinen
+Ritter informieren, die Kampf- sowie die Jagd-Rangliste einsehen kannst
+oder Neuigkeiten über das Spiel sowie übersichtlich zusammengefasst
+Informationen zu Provinzen, Orden oder Legenden erhältst. Falls du
+aktuell nur Bahnhof verstehst, ist das nicht schlimm. Wir haben ja noch
+gar nicht mit dem eigentlichen Spiel angefangen. :-)<br />
+Falls du kein Echo-Gerät besitzen solltest, kannst du das Spiel
+alternativ auch über die Alexa-App auf deinem Smartphone, Tablet oder
+Windows-PC spielen. In diesem Fall gibt es aber Einschränkungen:</p>
+<ul>
+<li>Du kannst keine In-Skill-Käufe tätigen, also etwa keine Diamanten
+kaufen</li>
+<li>Unter Umständen läuft der Düsterwald sowie der automatische Kampf
+nicht oder nur eingeschränkt</li>
+</ul>
+<p>In jedem Fall ist es empfehlenswert, sich ein Echo-Gerät zuzulegen,
+wenn du das Spiel längere Zeit und erfolgreich spielen möchtest.<br />
+Manchmal kann es im Spiel vorkommen, dass du dir unter Umständen eine
+Ausgabe nach einem abgesetzten Sprachbefehl nicht zu Ende anhören
+möchtest. Du hast jederzeit die Möglichkeit, die Ausgabe zu
+überspringen, indem du einfach einen neuen Befehl gibst. Dir entgeht
+dadurch nur die Audioausgabe, da die Berechnungen zum Zeitpunkt der
+Ausgabe bereits abgeschlossen sind. Es ist also nicht nötig, alle
+Ausgaben immer durchlaufen zu lassen.<br />
+Wenn du einmal etwas nicht verstanden hast, kannst du die Ausgabe auch
+jederzeit wiederholen lassen. Sage dazu einfach “Wiederholen”.</p>
+<h2 id="ritter-erstellen">Ritter erstellen</h2>
+<p>Zuerst müssen wir einen Ritter, also deinen Charakter, den du spielen
+wirst, erstellen. Öffne dazu einfach den Skill auf deinem Echo-Gerät,
+indem du “Alexa, öffne Rittermanager” sagst. Solltest du ein anderes
+Aktivierungswort verwenden, verwende dieses anstelle von Alexa.
+Alternativ kannst du auf Echo-Geräten, die über eine Aktionstaste
+verfügen, auch nach einem Tastendruck einen Sprachbefehl geben.<br />
+Nachdem der Skill geöffnet wurde, ertönt das Geräusch eines Schwertes,
+gefolgt von einer kurzen Einleitung. Folge nun den dort beschriebenen
+Schritten, um deinem Ritter einen Namen zu geben. Anschließend ist dein
+individueller Charakter erstellt und es kann losgehen.<br />
+<em>WICHTIG</em>: Wenn du den Skill deaktivierst und später wieder
+aktivierst, wird ein neuer Ritter erstellt. Sei also vorsichtig mit
+Befehlen wie “Deaktiviere Rittermanager”, da Alexa dies ohne Nachfrage
+direkt ausführt.</p>
+<h2 id="ritter-mit-deinem-amazon-konto-verknüpfen">Ritter mit deinem
+Amazon-Konto verknüpfen</h2>
+<p>Bevor du weitermachst, solltest du zuerst deinen Ritter mit deinem
+Amazon-Konto verknüpfen. Das hat den Vorteil, dass du jeden Tag 10
+Diamanten als Belohnung für die Account-Verknüpfung erhältst und dein
+Profil auch später auf der Website einsehen kannst. Außerdem ist dein
+Ritter dadurch zusätzlich abgesichert, weil er nach dem Deaktivieren und
+anschließend erneutem Aktivieren des Skills wiederhergestellt werden
+kann, indem du den Skill einfach erneut mit deinem Amazon-Konto
+verknüpfst.<br />
+Um den Skill mit deinem Konto zu verknüpfen, gehe in die Alexa-App auf
+deinem Smartphone oder Tablet, öffne die Skill-Seite von RitterManager
+und wähle dort “Einstellungen”. Wähle anschließend “Konto verknüpfen”
+und folge den Anweisungen auf dem Bildschirm deines Endgeräts.</p>
+<h1 id="grundlagen">Grundlagen</h1>
+<p>Da nun alles für den Start erledigt ist, wird es Zeit, sich einen
+ersten Überblick über deinen Ritter und die Welt von RitterManager im
+Allgemeinen zu verschaffen.</p>
+<h2 id="eigenschaften-deines-ritters">Eigenschaften deines Ritters</h2>
+<p>Ein essenzieller Bestandteil des Spiels besteht darin, die
+Eigenschaften deines Ritters kontinuierlich zu verbessern und ihn so für
+zukünftige Herausforderungen wie Abenteuer oder Kämpfe zu stärken und
+schlussendlich zum Erfolg zu führen. Um einen Überblick über die
+Eigenschaften zu hören, sage einfach “Mein Ritter”. Im Anschluss hast du
+die Möglichkeit, mehr über die Kampfeigenschaften oder die
+Jagdeigenschaften zu erfahren. Alternativ kannst du aber auch direkt
+“Meine Kampfeigenschaften” oder “Meine Jagdeigenschaften” sagen.</p>
+<h3 id="kampfeigenschaften">Kampfeigenschaften</h3>
+<p>Die Kampfeigenschaften deines Ritters sind der Grundbaustein für
+erfolgreiche Kämpfe in der Arena. Dein Ritter verfügt über folgende
+Attribute:</p>
+<ul>
+<li>Lebenspunkte: Die Lebenspunkte entscheiden darüber, wie viel Schaden
+dein Ritter einstecken kann, ehe er sich bei einem Kampf geschlagen
+geben muss.</li>
+<li>Stärke: Je höher deine Stärke ist, desto höher ist der verursachte
+Schaden, wenn du deinen Gegner triffst.</li>
+<li>Verteidigung: Die Verteidigung ist das gegensätzliche Attribut zur
+Stärke. Je höher sie ist, desto weniger Schaden kann dein Gegner dir mit
+einem Treffer verursachen.</li>
+<li>Glück: Je höher das Glück, desto wahrscheinlicher ist es, dass du
+deinen Gegner triffst.</li>
+<li>Geschwindigkeit: Je höher deine Geschwindigkeit, desto höher ist die
+Wahrscheinlichkeit, dass du deinem Gegner ausweichen kannst. Außerdem
+sorgt eine hohe Geschwindigkeit dafür, dass du den Kampf mit einer
+höheren Wahrscheinlichkeit beginnen kannst.</li>
+</ul>
+<p>Glück und Geschwindigkeit helfen dir zudem, einen kleinen Bonus auf
+deinen Schaden zu erhalten oder den Schaden deines Gegners etwas zu
+reduzieren. Eine gute Balance deiner Kampfwerte ist daher sehr
+wichtig.</p>
+<p>Wenn du gezielt einen dieser Kampfwerte abfragen möchtest, sage z.B.
+einfach “Meine Stärke” oder irgendein anderes Attribut, um mehr darüber
+zu erfahren. So erhältst du auch die genaue Aufteilung zwischen
+Basiswert, den zusätzlichen Punkten durch Bonuseigenschaften oder
+temporäre Effekte (z.B. durch Nahrung) sowie den Schmied-Upgrades für
+Stärke und Verteidigung und den Upgrades in der Ordenshalle für Glück
+und Geschwindigkeit. Außerdem musst du dir so nicht alle anderen Werte
+anhören, wenn du nur einen bestimmten überprüfen möchtest.</p>
+<h3 id="jagdeigenschaften">Jagdeigenschaften</h3>
+<p>Neben dem Kampf gibt es noch eine weitere Disziplin im Spiel, in der
+du deinen Ritter trainieren kannst, die Jagd im Düsterwald. Folgende
+Attribute können hier trainiert werden:</p>
+<ul>
+<li>Durchschlagskraft: Anhand der Durchschlagskraft wird der Schaden
+berechnet, wenn du einen Gegner bei der Jagd triffst.</li>
+<li>Genauigkeit: Je höher die Genauigkeit, umso wahrscheinlicher ist es,
+einen Gegner bei der Jagd zu treffen.</li>
+<li>Spuren Lesen: Je besser du im Spuren Lesen bist, desto häufiger
+findest du einen Gegner bei der Jagd.</li>
+</ul>
+<p>Wie im Kampf auch ist eine gute Punkteverteilung für erfolgreiche
+Ergebnisse bei der Jagd ausschlaggebend. Die Jagd-Eigenschaften können
+jederzeit mit dem Befehl “Meine Jagd” abgefragt werden.</p>
+<h3 id="besondere-fähigkeiten">Besondere Fähigkeiten</h3>
+<p>Neben den Kampf- und Jagdeigenschaften gibt es noch weitere besondere
+Fähigkeiten, die dein Ritter erlangen kann. Hier wird ebenfalls zwischen
+Kampf und Jagd unterschieden. Die Fähigkeiten schauen wir uns später
+noch im Detail an, wenn wir uns mit dem Shop und der Jagdhütte
+beschäftigen.</p>
+<h3 id="bonuseigenschaften">Bonuseigenschaften</h3>
+<p>Um deinem Ritter noch effektiver zum Erfolg zu verhelfen, kannst du
+ihn mit mächtigen Bonuseigenschaften ausstatten. Diese steigern entweder
+die Attribute für den Kampf oder die Jagd um einige Punkte oder geben
+dir einen anderen Vorteil. Bonuseigenschaften für den Kampf werden im
+Shop gekauft, die für die Jagd in der Jagdhütte. In den Abschnitten
+“Shop” und “Jagdhütte” wird detaillierter auf die verfügbaren
+Bonuseigenschaften eingegangen.</p>
+<h3 id="kampfklasse">Kampfklasse</h3>
+<p>Abschließend gibt es noch eine letzte Eigenschaft deines Ritters, die
+sogenannte Kampfklasse. Jede Kampfklasse verleiht deinem Ritter einen
+Vorteil sowie einen besonderen Kampftitel (z.B. Fußknecht). Dieser ist
+später an vielen Stellen im Spiel zu hören, etwa in Kämpfen in der Arena
+oder wenn ein anderer Spieler nach deinem Ritter sucht.<br />
+Zu Beginn verfügt dein Charakter über keinen besonderen Kampftitel und
+ist daher auch noch keiner Kampfklasse zugeordnet. Die Zuweisung in eine
+Klasse erfolgt jeden Mittwoch um 12 Uhr bei der Kampfklassenauswertung.
+Entscheidend dafür, in welche Kampfklasse dein Ritter eingeteilt wird,
+ist deine Spielaktivität. Je mehr du im Spiel machst, desto aktiver bist
+du und desto besser wirst du bei der Kampfklassenauswertung abschneiden.
+Als Aktivität zählt alles, was einen Befehl im Spiel erfordert. Der
+Düsterwald oder der automatische Kampf zählen also nicht zur
+Spielaktivität.<br />
+<em>ACHTUNG</em>: Kampfklassen sind dynamisch und du kannst von einer
+hohen auch wieder in eine niedrigere absteigen, solltest du in einer
+Woche weniger aktiv gewesen sein. Wenn du deine Kampfklasse also halten
+möchtest oder nach und nach immer weiter aufsteigen willst, solltest du
+entsprechend aktiv im Spiel sein.<br />
+Insgesamt gibt es 14 Kampfklassen, die dir folgende Vorteile
+bringen:</p>
+<ul>
+<li>Gefreiter: Mehr Erfahrung bei den täglichen Abenteuern</li>
+<li>Fußknecht: Abenteuer kosten deinem Ritter weniger Energie</li>
+<li>Landsknecht: 5% mehr Geschwindigkeit</li>
+<li>Feldwebel: 5% mehr Glück</li>
+<li>Fähnrich: 10% Rabatt beim Schmied</li>
+<li>Leutnant: Mehr Ruhmpunkte durch gewonnene Kämpfe</li>
+<li>Hauptmann: 5% mehr Verteidigung</li>
+<li>Zornbringer: 10% mehr Erfahrungspunkte bei Kämpfen</li>
+<li>Champion: 5% mehr Stärke</li>
+<li>Feldkommandant: Mehr Diamanten bei Geschenken vom König</li>
+<li>Sturmreiter: 10% mehr Gold pro Stunde von deinen Leibeigenen</li>
+<li>Kriegsherr: Berechtigt dich, die epische Kampffähigkeit
+“Bogenschuss” zu kaufen und zu nutzen</li>
+<li>Kriegsfürst: Berechtigt dich, die epische Kampffähigkeit
+“Lebensentzug” zu kaufen und zu nutzen</li>
+<li>Oberster Kriegsfürst: Berechtigt dich, die epische Kampffähigkeit
+“Fluch der Pein” zu kaufen und zu nutzen</li>
+</ul>
+<p>Du kannst auch abfragen, wie aktiv du momentan bist. Sage dazu
+einfach “Meine Aktivität”. Anschließend hörst du deinen Aktivitäts-Rang.
+Dieser ist ausschlaggebend dafür, wie viele Kampfklassenpunkte du bei
+der Kampfklassenauswertung erhalten kannst. Anhand dieser
+Kampfklassenpunkte wird dann deine Kampfklasse ermittelt. Anders als die
+Aktivität kannst du die Kampfklassenpunkte nicht abfragen.<br />
+Insgesamt gibt es 14 dieser Aktivitäts-Ränge. Aus deinem Aktivitäts-Rang
+lässt sich aber nicht zwangsläufig ableiten, in welche Kampfklasse du
+aufsteigen oder ob du absteigen wirst. Du solltest aber darauf achten,
+mindestens einen Aktivitäts-Rang von 5 oder höher zu erreichen, da jeden
+Mittwoch 10 % deiner bisher gesammelten Kampfklassenpunkte verloren
+gehen und du so mit hoher Wahrscheinlichkeit nicht absteigen wirst.</p>
+<h2 id="weitere-wichtige-bausteine">Weitere wichtige Bausteine</h2>
+<p>Zusätzlich zu den Kampf-, Jagd-, und Bonuseigenschaften gibt es noch
+einige weitere Werte und Bausteine des Spiels, die für dich und deinen
+Ritter von Bedeutung sind:</p>
+<ul>
+<li>Level: Mit jedem Level, das dein Ritter aufsteigt, erhältst du einen
+Fertigkeitspunkt. Diesen kannst du einsetzen, um eines der Attribute für
+den Kampf zu verbessern. Das Level erhöht sich, wenn du Erfahrungspunkte
+sammelst. Diese erhältst du im Kampf, bei den täglichen Abenteuern oder
+auch im schwarzen Turm. Ein Fertigkeitspunkt verbessert den Basiswert um
+10 Punkte mit Ausnahme der Lebenspunkte, die pro Punkt um 20 gesteigert
+werden.</li>
+<li>Jagd-Level: Wie auch im Kampf kannst du nach dem Erreichen eines
+neuen Jagd-Levels einen Fertigkeitspunkt für eine Jagd-Eigenschaft
+vergeben. Das Jagd-Level erhöht sich, wenn du Erfahrungspunkte bei der
+Jagd im Düsterwald sammelst.</li>
+<li>Ruhm: Deine Ruhmpunkte entscheiden über die Platzierung auf der
+Rangliste. Je mehr du hast, desto besser deine Platzierung in der
+Ritter-Rangliste. Ruhmpunkte erhältst du, indem du Kämpfe gewinnst. Wenn
+du einen Kampf verlierst, verlierst du aber auch ein paar
+Ruhmpunkte.</li>
+<li>Gold: Dies ist die Hauptwährung im Spiel. Eine Grenze, wie viel Gold
+du maximal haben kannst, gibt es nicht.</li>
+<li>Leibeigene: Leibeigene produzieren jede Stunde neues Gold für dich.
+Leibeigene kannst du z.B. im Kampf von anderen Rittern stehlen sowie im
+schwarzen Turm, auf dem Jahrmarkt oder auch bei täglichen Abenteuern und
+im Düsterwald bekommen.</li>
+<li>Pfeilmacher: Die Pfeilmacher produzieren jede Stunde Pfeile für
+dich, die für die Jagd im Düsterwald benötigt werden. Mehr zu den
+Pfeilmachern erfährst du im Abschnitt “Pfeilwerkstatt”.</li>
+<li>Energie: Viele Aktionen im Spiel kosten deinem Ritter Energiepunkte.
+Jede Stunde erhältst du zusätzliche Energie, es sei denn, du hast die
+maximal mögliche Energie erreicht. Sage “meine Energie” für mehr
+Informationen. Energie kannst du auch jederzeit gegen Diamanten und auch
+über deine Maximalenergie hinaus kaufen.</li>
+<li>Diamanten: Diamanten sind sehr wertvoll. Sie können im Spiel
+gefunden oder gegen Echtgeld gekauft werden. Mit ihnen kannst du z.B.
+Upgrades beim Schmied ohne Wartezeit freischalten, Bonuseigenschaften
+und Fähigkeiten im Shop kaufen oder deinen Ritter wieder mit neuer
+Energie versorgen, wenn du nicht auf die nächste Stunde warten
+möchtest.</li>
+<li>Spielernummer: Diese Nummer identifiziert deinen Ritter eindeutig
+und hilft bei technischen Problemen oder bei der Spielersuche, wenn dich
+ein anderer Ritter nicht mit deinem Namen finden kann.</li>
+</ul>
+<p>Um einen dieser Werte abzufragen, sage z.B. “mein Gold” oder einen
+anderen der genannten Werte. Du erhältst dann einige nützliche
+Informationen darüber.<br />
+<em>WICHTIG</em>: Um die Position auf der Rangliste und deine Ruhmpunkte
+abzufragen, sage “Rangliste”. Die Befehle “Ruhm”, “Meine Ruhmpunkte”
+oder “Mein Ruhm” werden nicht akzeptiert.</p>
+<h3 id="saisons">Saisons</h3>
+<p>Damit es in RitterManager nicht langweilig wird, ist das Spiel
+rundenbasiert. Eine Runde wird hier als Saison bezeichnet. Jede Saison
+dauert mind. 6 Monate. So hat jeder Spieler die Möglichkeit, sich unter
+fairen Bedingungen auch gegen langjährige Spieler zu behaupten.
+Zentraler Bestandteil für den Saison-Ablauf ist der Orden. Im Abschnitt
+“Orden” wird detailliert auf das Ende einer Saison sowie den Start einer
+neuen Saison eingegangen.</p>
+<h3 id="rangliste">Rangliste</h3>
+<p>Zum Schluss dieses Abschnitts noch ein paar Informationen zum
+Ranglisten-System in RitterManager:</p>
+<ul>
+<li>Die Ritter-Rangliste ist in vier Ligen unterteilt: Liga A, B, C und
+D</li>
+<li>Über den Platz in der Rangliste entscheiden die Ruhmpunkte</li>
+<li>Liga A beinhaltet die Top 50 Spieler gemessen an den
+Ruhmpunkten</li>
+<li>Liga B beinhaltet die Plätze 51 bis 100 gemessen an den Ruhmpunkten,
+insgesamt gibt es in Liga B also 100 Plätze</li>
+<li>Liga C beinhaltet die Plätze 101 bis 250 gemessen an den
+Ruhmpunkten, insgesamt gibt es in Liga C somit 150 Plätze</li>
+<li>Liga D beinhaltet alle anderen Spieler. Die Platzierung ergibt sich
+auch hier nach den Ruhmpunkten.</li>
+</ul>
+<p>Wenn du im Skill die besten Ritter abfragen möchtest, sage einfach
+“Top 10”. Alternativ hast du die Option, die Rangliste übersichtlich auf
+der Website von RitterManager einzusehen.</p>
+<h4 id="besonderheiten-der-einsteiger-rangliste">Besonderheiten der
+Einsteiger-Rangliste</h4>
+<p>Als Neueinsteiger misst du dich ausschließlich mit den Spielern, die
+mit dir zusammen in der Einsteiger-Rangliste sind. Das bietet dir die
+Möglichkeit, als Anfänger in einem fairen Umfeld zu kämpfen und dich in
+Ruhe auszuprobieren. Anders als die reguläre Rangliste gelten für die
+Einsteiger-Rangliste ein paar Besonderheiten:</p>
+<ul>
+<li>Spieler aus der regulären Rangliste können dich nicht angreifen,
+auch nicht, wenn sie gezielt nach dir suchen</li>
+<li>Die Einsteiger-Rangliste beinhaltet ihre eigenen vier Ligen A bis
+D</li>
+</ul>
+<p>Ansonsten kannst du als Anfänger ganz normal mit anderen Spielern aus
+der regulären Rangliste interagieren. Ab der nächsten Saison spielst du
+dann automatisch in der regulären Rangliste.</p>
+<h1 id="zentrale-spielelemente">Zentrale Spielelemente</h1>
+<p>Da du nun über die Attribute deines Ritters Bescheid weißt, können
+wir uns jetzt den wichtigen Dingen im Alltag eines RitterManagers
+widmen. Im Folgenden werden die zentralen Elemente des Spiels
+detailliert erklärt. Falls du schon etwas Erfahrung hast und nach einem
+bestimmten Ort oder Baustein des Spiels suchst, verwende einfach die
+Navigation oben auf dieser Seite.</p>
+<h2 id="abenteuer">Abenteuer</h2>
+<p>Da du nun die Grundlagen kennst, wird es Zeit, mit dem Alltag des
+RitterManagers zu beginnen, und dieser startet normalerweise immer mit
+einem täglichen Abenteuer.<br />
+Bei den täglichen Abenteuern handelt es sich um eine kleine Story-Linie
+im Spiel. Der Ablauf ist immer derselbe:</p>
+<ul>
+<li>Pro Tag gibt es ein neues Abenteuer, wenn du das aktuelle
+erfolgreich meisterst</li>
+<li>Abenteuer beginnen mit einer kleinen Geschichte und enden mit einem
+Kampf gegen einen fiktiven Charakter, also einen NPC</li>
+<li>Jedes Abenteuer bringt dir eine kleine Belohnung wie Gold, Diamanten
+oder Leibeigene sowie einige Erfahrungspunkte</li>
+</ul>
+<p>Um auf das tägliche Abenteuer zu gehen, sage einfach “Abenteuer”.
+Dein Ritter begibt sich jetzt auf die Suche nach einem Abenteuer und die
+eigentliche Geschichte beginnt. Jeder Versuch kostet deinem Ritter 5
+Energiepunkte, sofern du noch keiner Kampfklasse zugeteilt bist. Ab
+Kampfklasse 2 (Fußknecht) werden nur 2 Energiepunkte abgezogen.<br />
+Solltest du bei einem Abenteuer einmal nicht erfolgreich sein, kannst du
+es einfach nochmal probieren. Du musst nur dann bis zum nächsten Tag
+warten, wenn du das Abenteuer erfolgreich meistern konntest und du ein
+neues Abenteuer bestreiten darfst.<br />
+Wenn du nach dem Absolvieren eines Abenteuers ein Level aufgestiegen
+bist, kannst du außerdem sofort einen Fertigkeitspunkt verteilen.</p>
+<h3 id="prestige-modus">Prestige-Modus</h3>
+<p>Insgesamt gibt es in RitterManager zurzeit 100 Abenteuer. Damit du
+auch nach dem Absolvieren des 100. Abenteuers weiterhin auf das tägliche
+Abenteuer gehen kannst, greift nach Abenteuer 100 der sogenannte
+Prestige-Modus.<br />
+Im Prestige-Modus startet die Story-Linie wieder von vorne, jedoch sind
+die Belohnungen 20% höher und die Gegner etwas stärker.</p>
+<h2 id="kampf">Kampf</h2>
+<p>Nachdem du nun die Abenteuer kennengelernt hast, ist es wichtig, sich
+mit dem Kernbestandteil des Spiels auseinanderzusetzen, dem Kampf.
+Kämpfe werden in der Arena ausgetragen und du kämpfst dabei gegen andere
+Spieler in deinem Umfeld auf der Rangliste. Gewonnene Kämpfe bringen dir
+Ruhmpunkte, mit denen du deinen Platz auf der Rangliste verbessern
+kannst, sowie Erfahrungspunkte, die für den Levelaufstieg wichtig sind.
+Bei verlorenen Kämpfen verlierst du aber auch immer ein paar Ruhmpunkte,
+erhältst dafür aber dennoch Erfahrungspunkte.<br />
+Um einen Kampf zu beginnen, sage einfach “Kampf”. Wie auch die Abenteuer
+kostet jeder Kampf 5 Energiepunkte.</p>
+<h3 id="aufbau-eines-kampfes">Aufbau eines Kampfes</h3>
+<p>Ein Kampf besteht aus vier Zügen. Jeder hat also vier Runden Zeit,
+dem Gegner klarzumachen, wer hier das Sagen hat.<br />
+Erzielst du oder dein Gegner allerdings einen Schaden, der höher als die
+Lebenspunkte des Gegenübers ist, endet der Kampf vorzeitig. Andernfalls
+entscheidet am Ende des Kampfes der verbleibende prozentuale Anteil der
+Gesamtlebenspunkte eurer Ritter.<br />
+Hat dein Gegner also beispielsweise 100 Lebenspunkte und du fügst ihm
+insgesamt 20 Schaden zu, er dir bei ebenfalls 100 Lebenspunkten aber nur
+10 Schaden, gewinnst du den Kampf, da du noch 90 % deiner Lebenspunkte
+übrig hast, dein Gegner hingegen nur 80 %. Schafft es einer der
+Kontrahenten, vor Ablauf der vier Runden insgesamt mehr als 100 Schaden
+zu verursachen, endet der Kampf vorzeitig und derjenige, der dem Gegner
+seine kompletten Lebenspunkte entziehen konnte, gewinnt.<br />
+Nach dem Kampf hörst du noch, wie viele Ruhmpunkte du gewonnen oder
+verloren, wie viel Erfahrung du gesammelt hast und ob du deinem Gegner
+Leibeigene stehlen konntest. Solltest du ein Level aufgestiegen sein,
+kannst du außerdem einen Fertigkeitspunkt vergeben.<br />
+<em>TIPP</em>: Du kannst auch jederzeit “Mein Level” sagen, um zu
+erfahren, ob du noch freie Fertigkeitspunkte übrig hast.</p>
+<p><em>WICHTIG</em>: Solltest du einen Kampf angestoßen haben und
+verlieren, können dir keine Leibeigenen gestohlen werden. Greift dich
+aber jemand an, können dir Leibeigene gestohlen werden. Nach dem Öffnen
+des Skills erfährst du, ob du in deiner Abwesenheit angegriffen
+wurdest.</p>
+<h3 id="geschenke-des-königs">Geschenke des Königs</h3>
+<p>Manchmal belohnt dich der König nach einem gewonnenen Kampf mit einem
+kleinen Geschenk. Diese Geschenke enthalten entweder Diamanten, Freilose
+für den Jahrmarkt oder Provinzmünzen für den Provinzkampf. Über Freilose
+erfährst du mehr im Abschnitt “Jahrmarkt”, über die Provinzmünzen im
+Abschnitt “Provinzkampf”.</p>
+<h3 id="kampfmodi">Kampfmodi</h3>
+<p>Insgesamt gibt es zwei Kampfmodi, die darüber entscheiden, in welchem
+Umfeld ausgehend von deiner Ranglistenposition ein Gegner gesucht
+wird:</p>
+<ul>
+<li>Normal: Hier wird ein Gegner im Bereich von Plus Minus 10 Plätzen
+ausgehend von deiner Ranglistenposition gesucht</li>
+<li>Zufälliger Gegner: Hier wird ein Gegner im Bereich von Plus Minus
+100 Plätzen ausgehend von deiner Ranglistenposition gesucht</li>
+</ul>
+<p>Ob der zufällige oder der normale Modus verwendet wird, kannst du
+nicht beeinflussen. Vermehrt kommt aber der normale Kampfmodus zum
+Einsatz.</p>
+<h3 id="schnellkampf">Schnellkampf</h3>
+<p>Du hast bestimmt schon gemerkt, dass ein einzelner Kampf viel Zeit
+bei der Audioausgabe benötigt. Wenn es einmal schneller gehen soll,
+kannst du auch den Befehl “Schnellkampf” verwenden. Dieser sorgt dafür,
+dass nur angesagt wird, gegen wen du kämpfst und ob du gewonnen oder
+verloren hast. Außerdem erhältst du wie beim regulären Kampf auch zum
+Schluss einen Bericht über die erhaltenen oder verlorenen Ruhmpunkte,
+die gewonnenen Erfahrungspunkte und womöglich über Leibeigene, die du
+deinem Gegner gestohlen hast. Geschenke des Königs werden natürlich auch
+angesagt.</p>
+<p><em>TIPP</em>: Erfahrene Spieler hören sich häufig die Kämpfe nicht
+bis zum Ende an, sondern starten sofort den nächsten Schnellkampf, wenn
+die Kampfmelodie ertönt. So lässt sich in kurzer Zeit deutlich mehr
+Energie in Kämpfe investieren und die Effektivität steigern.</p>
+<h3 id="automatischer-kampf">Automatischer Kampf</h3>
+<p>Ab Level 100 hast du zudem die Möglichkeit, den automatischen Kampf
+zu verwenden. Damit musst du nicht jedesmal “Kampf” oder “Schnellkampf”
+sagen, um einen neuen Gegner zu suchen, sondern kannst deinen Ritter
+ganz einfach in die Arena schicken. Er kämpft dann so lange, bis seine
+Energie verbraucht ist oder du den Aufenthalt in der Arena mit dem
+Befehl “Stopp” beendest.<br />
+Nach dem Öffnen des Skills hörst du dann eine Zusammenfassung über den
+Arena-Aufenthalt. Hier erfährst du, ob du dich auf der Rangliste
+verbessern konntest, wie viele Erfahrungspunkte du gesammelt hast und
+wie viele Level du aufgestiegen bist. Anschließend hast du, sofern du
+Level aufsteigen konntest, die Möglichkeit, einen oder mehrere
+Fertigkeitspunkte zu vergeben.<br />
+Um den automatischen Kampf zu starten, sage einfach “Automatischer
+Kampf” oder “Auto Kampf”.</p>
+<h2 id="schmied">Schmied</h2>
+<p>Bei den Grundlagen hast du bereits von Schmied-Upgrades gehört. Die
+Fertigkeitspunkte sind nämlich nicht der einzige Weg, die Attribute
+deines Ritters zu verbessern. Sie bilden lediglich die Basis deiner
+Werte. Stärke und Verteidigung können durch Upgrades für dein Schwert
+sowie deine Rüstung beim Schmied noch gesteigert werden. Um den Schmied
+zu besuchen, sage einfach “Schmied”.<br />
+Anschließend wirst du vom Schmied begrüßt und kannst dich für eines der
+folgenden Upgrades entscheiden:</p>
+<ul>
+<li>Schwert: Jede weitere Stufe, die du dein Schwert verbesserst, erhöht
+deine Basisstärke um 1 %</li>
+<li>Rüstung: Jede Stufe, die du deine Rüstung verbesserst, erhöht deine
+Basisverteidigung um 1 %</li>
+<li>Unterkünfte: Mit jeder Stufe, die du deine Unterkünfte verbesserst,
+kannst du 125 Leibeigene mehr beherbergen</li>
+</ul>
+<p>Zur Erinnerung: Um zu hören, wie hoch deine Basiswerte sind, sage
+einfach “Meine Stärke” oder ein anderes Attribut. Du hörst dann auch, um
+wie viel Prozent der Basiswert durch Upgrades beim Schmied gesteigert
+wird. Um zu erfahren, wie viele Leibeigene du gerade beherbergen kannst,
+sage “Mein Gold”.</p>
+<p>Upgrades beim Schmied werden mit Gold bezahlt. Je höher die Stufe
+eines Upgrades, desto teurer wird sie. Zur Erinnerung: Leibeigene
+produzieren jede Stunde für dich neue Goldstücke. Du solltest also
+unbedingt darauf achten, besonders zu Beginn ein gutes Polster an
+Leibeigenen zu haben und auch deine Unterkünfte ein wenig ausbauen,
+damit du die Leibeigenen auch beherbergen kannst. Andernfalls würden
+Leibeigene, die du etwa im Turm oder im Kampf erhältst, verloren gehen,
+weil sie keinen Platz in deinen Unterkünften finden können, sofern diese
+schon voll sind.<br />
+Je höher die Stufe eines Upgrades beim Schmied ist, umso länger dauert
+es auch. Maximal dauert ein Upgrade nicht länger als 12 Stunden.
+Solltest du bei einem Upgrade diesen Wert für die Dauer erreicht haben,
+erhöht sich die Zeit, die das Upgrade in Anspruch nimmt, bei der
+nächsten Stufe nicht mehr.<br />
+Wenn du nicht auf die Fertigstellung eines Upgrades warten möchtest,
+kannst du es auch direkt mit einem kleinen Diamantenbetrag freischalten.
+Dieser erhöht sich ebenfalls mit der Stufe des Upgrades, maximal werden
+für das sofortige Freischalten aber nicht mehr als 50 Diamanten
+fällig.<br />
+Wenn das Upgrade abgeschlossen ist, gibt dir der Schmied im Skill
+Bescheid. Du kannst auch jederzeit “Schmied” sagen, um nachzuschauen,
+wie lange das Upgrade noch dauert.</p>
+<h2 id="shop">Shop</h2>
+<p>Der Shop ist neben dem Kampf zum Leveln und Verbessern der Position
+auf der Rangliste ein weiterer wichtiger Bestandteil des Spiels. Über
+ihn kannst du deinen Ritter nämlich mit neuen besonderen
+Kampffähigkeiten sowie Bonuseigenschaften ausstatten.<br />
+Alle Produkte im Shop werden mit Diamanten bezahlt. Zur Erinnerung:
+Diamanten kannst du im Spiel finden oder auch jederzeit gegen Echtgeld
+kaufen.<br />
+Das Angebot im Shop ändert sich jeden Tag um 12 Uhr und ist für jeden
+Spieler gleich. Pro Tag hast du immer die Auswahl zwischen einer
+Kampffähigkeit, einer Bonuseigenschaft und einem Titel. Allerdings gibt
+es für Fähigkeiten und Bonuseigenschaften Begrenzungen:</p>
+<ul>
+<li>Pro Tag kannst du maximal eine Fähigkeit kaufen</li>
+<li>Pro Tag kannst du maximal 15 Bonuseigenschaften kaufen</li>
+</ul>
+<p>Der Titel hat im Übrigen keinerlei Auswirkungen im Kampf, er wird
+lediglich nach dem Namen deines Ritters in Kämpfen, bei der Spielersuche
+und einigen anderen Stellen im Spiel angesagt und dient somit
+ausschließlich der Personalisierung deines Ritters.</p>
+<p>Um zum Shop zu gelangen, sage einfach “zum Shop”.</p>
+<h3 id="kampffähigkeiten">Kampffähigkeiten</h3>
+<p>Damit der Kampf dynamischer und spannender wird, kannst du deinen
+Ritter mit besonderen Kampffähigkeiten ausstatten. Maximal kannst du im
+Kampf immer nur drei Fähigkeiten gleichzeitig einsetzen. Welche
+Fähigkeiten dein Ritter gerade nutzt, erfährst du, indem du “Fähigkeiten
+ändern” und anschließend “Kampffähigkeiten” sagst. Alternativ kannst du
+auch direkt “Kampffähigkeiten ändern” sagen.<br />
+Jede Kampffähigkeit ist in drei Stufen erhältlich, wobei jede Stufe die
+Effektivität der Fähigkeit steigert. Zu Beginn stehen die Fähigkeiten
+also nur in Stufe 1 zur Auswahl. Aufgrund der Begrenzung, pro Tag
+maximal eine Fähigkeit kaufen zu können, musst du für Stufe 2 und 3
+entsprechend warten, bis die Fähigkeit erneut im Shop verfügbar
+ist.<br />
+Darüber hinaus gibt es drei Fähigkeiten, die nur mit bestimmten
+Kampfklassen gekauft und genutzt werden können. Diese werden als epische
+Fähigkeiten bezeichnet. Solltest du eine dieser Fähigkeiten bereits
+gekauft haben, aber zurzeit nicht der dafür erforderlichen Kampfklasse
+angehören, kannst du die epische Fähigkeit auch nicht im Kampf
+verwenden.<br />
+Standardmäßig wird eine gekaufte Kampffähigkeit sofort aktiviert. Es sei
+denn, du hast schon mehr als drei verschiedene Kampffähigkeiten gekauft.
+Ab dann musst du neu erworbene Fähigkeiten zuerst aktivieren, ehe dein
+Ritter diese einsetzen wird.<br />
+Wann die Fähigkeiten im Kampf zum Einsatz kommen, ist von der Chance der
+jeweiligen Fähigkeit abhängig. Nachfolgend findest du einen Überblick
+über alle verfügbaren Kampffähigkeiten.</p>
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Fähigkeit</th>
+<th>Beschreibung (Stufe 1)</th>
+<th>Beschreibung (Stufe 2)</th>
+<th>Beschreibung (Stufe 3)</th>
+<th>Chance</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Magisches Schild</td>
+<td>Das magische Schild halbiert den Schaden des nächsten Angriffs.</td>
+<td>Der Schaden wird durch das magische Schild auf ein drittel
+reduziert.</td>
+<td>Nur ein Viertel des Schadens dringen durch das magische Schild.</td>
+<td>15 %</td>
+</tr>
+<tr class="even">
+<td>Kopfnuss</td>
+<td>Ein harter Schlag mit dem Kopf, der deinen Gegner zum Taumeln bringt
+und die Trefferchance deines Gegners um 20 % verringert.</td>
+<td>Der Schaden der Kopfnuss wird erhöht und außerdem sinkt die
+Trefferchance deines Gegners um 40 %.</td>
+<td>Die Kopfnuss wird noch stärker, und verringert außerdem die
+Trefferchance deines Gegners um 60 %.</td>
+<td>20 %</td>
+</tr>
+<tr class="odd">
+<td>Feuerball</td>
+<td>Ein magischer Feuerball verbrennt deinen Gegner und richtet 2,2
+fachen Schaden an.</td>
+<td>Der Feuerball wird noch heißer und erzeugt 2,8 fachen Schaden.</td>
+<td>In dieser endgültigen Stufe verbrennt der Feuerball deinen Gegner
+mit 3,4 fachem Schaden.</td>
+<td>15 %</td>
+</tr>
+<tr class="even">
+<td>Verband</td>
+<td>Mit diesem Verband werden 20 % deiner Lebenspunkte
+wiederhergestellt.</td>
+<td>Mit dem verbesserten Verband kann dein Ritter 40 % seiner Wunden
+heilen.</td>
+<td>Diese feinen Mullbinden stellen 60 % der Lebenspunkte wieder
+her.</td>
+<td>20 %</td>
+</tr>
+<tr class="odd">
+<td>Durchbohren</td>
+<td>Nutzt seltene Gelegenheiten um den Gegner zu durchbohren.</td>
+<td>Die Chance, den Gegner zu durchbohren, wird um 5 % erhöht.</td>
+<td>Die Chance, deinem Gegner ein jähes Ende zu bereiten, wird um 10 %
+erhöht.</td>
+<td>5 %</td>
+</tr>
+<tr class="even">
+<td>Falle</td>
+<td>Tritt dein Gegner beim Angriff in deine Falle, wird dieser verletzt
+und festgehalten. Dies garantiert dir den ersten Schlag.</td>
+<td>Durch zusätzliche Stahlfedern erhöht sich der Schaden der
+Falle.</td>
+<td>Die Falle wird zusätzlich im Boden verankert, sodass der Gegner kaum
+eine Chance hat, sich zu bewegen. Dadurch wird der Gegner unter
+Umständen längere Zeit bewegungsunfähig.</td>
+<td>25 %</td>
+</tr>
+<tr class="odd">
+<td>Klingenwirbel</td>
+<td>Dein Ritter wirbelt sein Schwert mit enormer Geschwindigkeit durch
+die Luft und kann den Gegner somit mehrfach treffen.</td>
+<td>Die Dauer des Klingenwirbels wird erhöht und kann nun bis zu dreimal
+das Ziel treffen.</td>
+<td>Die Dauer des Wirbels wird noch weiter erhöht und es wird möglich,
+den Gegner bis zu vier Mal zu treffen.</td>
+<td>10 %</td>
+</tr>
+<tr class="even">
+<td>Bogenschuss (kauf- und nutzbar ab Kampfklasse 12)</td>
+<td>Mit einem handlichen Kurzbogen fügst du deinem Gegner bis zu 1,8
+fachen Schaden zu.</td>
+<td>Weitere Körperteile können getroffen werden und der mögliche Schaden
+liegt beim 2,2 fachen Wert.</td>
+<td>Der Bogenschuss kann in dieser finalen Stufe auch den Kopf treffen
+und damit den Gegner sofort erledigen.</td>
+<td>15 %</td>
+</tr>
+<tr class="odd">
+<td>Lebensentzug (kauf- und nutzbar ab Kampfklasse 13)</td>
+<td>Du rufst die dunklen Mächte zur Hilfe und entziehst deinem Gegner
+Lebenspunkte. Der 1,6 fache Schaden wird angerichtet und dir
+gutgeschrieben.</td>
+<td>Der Entzug wird stärker und verursacht 2 fachen Schaden, der dir als
+Lebenspunkte gutgeschrieben wird.</td>
+<td>Der Entzug wird stärker und verursacht 2 fachen Schaden, der dir als
+Lebenspunkte gutgeschrieben wird.</td>
+<td>10 %</td>
+</tr>
+<tr class="even">
+<td>Fluch der Pein (kauf- und nutzbar ab Kampfklasse 14)</td>
+<td>Verflucht deinen Gegner. Dieser leidet nach jedem Schlag weiter und
+verliert jede Runde, 1,1 fachen Schaden zusätzlich zu deinem anderen
+Angriff.</td>
+<td>Der Fluch wird stärker und dein Gegner leidet jede Runde weiter
+unter 1,3 fachem Schaden.</td>
+<td>Die Finale Stufe des Fluchs erzeugt jede Runde zusätzlich 1,6 fachen
+Schaden.</td>
+<td>10 %</td>
+</tr>
+</tbody>
+</table>
+<h3 id="kampf-bonuseigenschaften">Kampf-Bonuseigenschaften</h3>
+<p>Neben den Fähigkeiten findest du im Shop auch immer eine
+Bonuseigenschaft, die du bis zu 15 Mal pro Tag kaufen kannst. Manche
+Boni sind auf eine bestimmte Gesamtanzahl begrenzt. Anders als die
+Kampffähigkeiten müssen die Bonuseigenschaften nicht aktiviert werden,
+diese stehen dir nach dem Kauf sofort zur Verfügung.<br />
+Nachfolgend findest du eine Übersicht über alle verfügbaren
+Kampf-Bonuseigenschaften:</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Bonus</th>
+<th>Effekt</th>
+<th>Begrenzt auf</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Animateur</td>
+<td>+1 Gold pro Leibeigener pro Stunde</td>
+<td>150 Stück</td>
+</tr>
+<tr class="even">
+<td>Ausgewogene Ernährung</td>
+<td>+1 Energiepunkt pro Stunde</td>
+<td>75 Stück</td>
+</tr>
+<tr class="odd">
+<td>Federbett</td>
+<td>+10 Maximalenergie</td>
+<td>Unbegrenzt</td>
+</tr>
+<tr class="even">
+<td>Gelehrigkeit</td>
+<td>+2% Erfahrungspunkte bei gewonnenen Kämpfen und anderen
+Aktionen</td>
+<td>25 Stück</td>
+</tr>
+<tr class="odd">
+<td>Ketten</td>
+<td>+20 Leibeigene vor Diebstahl schützen</td>
+<td>Unbegrenzt</td>
+</tr>
+<tr class="even">
+<td>Geschäfte Klingen</td>
+<td>+50 Stärke</td>
+<td>Unbegrenzt</td>
+</tr>
+<tr class="odd">
+<td>Steinhart</td>
+<td>+50 Verteidigung</td>
+<td>Unbegrenzt</td>
+</tr>
+<tr class="even">
+<td>Kleeblatt</td>
+<td>+50 Glück</td>
+<td>Unbegrenzt</td>
+</tr>
+<tr class="odd">
+<td>Reflexe des Assassinen</td>
+<td>+50 Geschwindigkeit</td>
+<td>Unbegrenzt</td>
+</tr>
+<tr class="even">
+<td>Abhärtung</td>
+<td>+50 Lebenspunkte</td>
+<td>Unbegrenzt</td>
+</tr>
+</tbody>
+</table>
+<h2 id="spielersuche">Spielersuche</h2>
+<p>Um mit anderen Spielern zu interagieren, kannst du sie entweder mit
+ihrem Namen oder der Spielernummer finden. Um die Spielersuche zu
+nutzen, sage einfach “Suche nach”, gefolgt vom Spielernamen.<br />
+Möchtest du nach einer Spielernummer suchen, sagst du stattdessen “Suche
+nach Nummer”, gefolgt von der Spielernummer. Die Spielernummer kannst du
+entweder als ganzes Wort oder als eine Folge von Ziffern sprechen.<br />
+Wenn du den gewünschten Spieler gefunden hast, sage “ja” und du erhältst
+folgende Interaktionsmöglichkeiten:</p>
+<ul>
+<li>Angreifen: Mit dieser Funktion kannst du einen Spieler direkt
+angreifen. Direktangriffe sind pro Tag (beginnend ab 12 Uhr mittags) auf
+3 begrenzt. Dabei ist es unwichtig, ob du dreimal denselben Spieler oder
+drei verschiedene Gegner direkt angreifst.</li>
+<li>Geschenk senden: Diese Funktion wird im Abschnitt “Briefkasten”
+genauer erläutert.</li>
+<li>Brief schreiben, sofern verfügbar: Diese Funktion wird im Abschnitt
+“Briefkasten” genauer erläutert.</li>
+<li>Handel vorschlagen: Diese Funktion wird im Abschnitt “Handel”
+genauer erläutert.</li>
+<li>Anfrage für ein Tag-Team schicken: Diese Funktion schauen wir uns im
+nächsten Abschnitt an.</li>
+</ul>
+<p>Du merkst also, dass RitterManager auch viel Wert auf die
+gegenseitige Interaktion setzt. Bei manchen Funktionen, die nun nach und
+nach erklärt werden, kommt auch die Spielersuche zum Einsatz. Daher ist
+es wichtig, diese bereits jetzt zu kennen, auch wenn du die
+Interaktionsmöglichkeiten an sich noch nicht kennst.</p>
+<h2 id="tag-team">Tag-Team</h2>
+<p>Zusätzlich zu deinen Kampfwerten, den Schmied-Upgrades und den
+Aufrüstungsmöglichkeiten im Shop kannst du dich auch von einem anderen
+Ritter im Kampf, bei täglichen Abenteuern, im schwarzen Turm oder auch
+im Düsterwald unterstützen lassen. Wenn sich zwei Ritter
+zusammenschließen, bilden sie ein sogenanntes Tag-Team.<br />
+Viele erfahrene Spieler sind bereits mit anderen Rittern in einem
+Tag-Team, versuche also am besten, über den offiziellen Discord-Server
+zum Spiel oder die offizielle Facebook-Gruppe nach einem
+Tag-Team-Partner zu suchen und suche nicht wild nach Spielern, um ihnen
+Anfragen zu stellen. Die Links zur Facebook-Gruppe und zum
+Discord-Server findest du auf der <a
+href="https://www.knight-manager.com/">RitterManager-Webseite</a>.</p>
+<p>Damit ihr euch gegenseitig unterstützen könnt, müsst ihr gleichzeitig
+online sein. Dann kann es im Kampf, bei einem Abenteuer sowie im
+schwarzen Turm passieren, dass dir dein Tag-Team-Partner zur Hilfe eilt
+und versucht, den Gegner niederzustrecken. Es macht also durchaus Sinn,
+sich anfangs einen stärkeren Tag-Team-Partner zu suchen.
+Glücklicherweise ist die Community sehr hilfsbereit und hilft dir sicher
+gerne.<br />
+Tag-Teams sind darüber hinaus nichts Festes. Sie können beliebig oft
+aufgelöst und neu gebildet werden. Somit ist es auch möglich, dass du
+etwa bei einem besonders schweren Gegner, z.B. im schwarzen Turm,
+temporär von einem besonders starken Ritter unterstützt wirst. Frage
+hier ebenfalls gerne auf dem offiziellen Discord-Server oder in der
+offiziellen Facebook-Gruppe nach Unterstützung.</p>
+<p>Um eine Tag-Team-Anfrage zu versenden, kannst du einfach die
+Spielersuche verwenden. Wenn du den gewünschten Spieler gefunden hast,
+kannst du einfach “Anfrage für ein Tag Team schicken” sagen. Solltest du
+dich zum Zeitpunkt des Versendens der Anfrage bereits in einem Tag-Team
+befinden, wirst du gefragt, ob du das aktuell bestehende Tag-Team
+auflösen möchtest.<br />
+Solltest du selbst eine Tag-Team-Anfrage erhalten haben, wird dir das
+automatisch im Spiel mitgeteilt; beispielsweise nach dem Öffnen des
+Skills. Du kannst dann entscheiden, ob du die Anfrage akzeptieren oder
+ablehnen möchtest.</p>
+<p>Wenn du abfragen möchtest, mit wem du gerade in einem Tag-Team bist,
+sage einfach “Mein Tag Team”.</p>
+<h2 id="rucksack">Rucksack</h2>
+<p>Natürlich gibt es in RitterManager auch ein Inventar deines
+Charakters, den Rucksack. Hier findest du alle Gegenstände, die dein
+Ritter aktuell neben seinem Gold, seinen Diamanten, den Leibeigenen und
+Pfeilmachern besitzt.<br />
+Um den Rucksack zu öffnen, sage einfach “Rucksack”. Du hast dann die
+Auswahl zwischen mehreren Kategorien, beispielsweise verbrauchbar oder
+Nahrung. Nachdem du eine Kategorie ausgewählt hast, hörst du die
+Gegenstände, die dieser zugeordnet sind. Anschließend hast du die
+Möglichkeit, einen Gegenstand auszuwählen, um mehr über ihn zu erfahren.
+Außerdem kannst du dann auch mit ihm interagieren, ihn beispielsweise
+anlegen, benutzen oder im Falle von Nahrung essen. Die verfügbaren
+Optionen werden dir bei jedem Gegenstand angesagt.<br />
+<em>WICHTIG</em>: Wenn du einen Gegenstand anlegst, werden automatisch
+alle Gegenstände dieser Art angelegt. Wenn du also einen Thorium Speer
+anlegst und du besitzt mehrere davon, werden diese eingesetzt, bis alle
+verbraucht sind. Vergiss also nie, Gegenstände auch wieder abzulegen,
+wenn du nur ein paar davon für einen kurzen Moment verwenden
+möchtest.</p>
+<p><em>WICHTIG</em>: Bei wenigen Gegenständen hörst du auch womöglich,
+dass sie seelengebunden sind. Das bedeutet, dass du sie nicht an andere
+Ritter weitergeben kannst, beispielsweise über die Geschenke- oder die
+Handelsfunktion.<br />
+Im Abschnitt “Übersicht aller Gegenstände” findest du außerdem eine
+Übersicht über alle zurzeit in RitterManager verfügbaren
+Gegenstände.</p>
+<h3 id="besonderheiten-bei-der-nahrung">Besonderheiten bei der
+Nahrung</h3>
+<p>Nahrungsmittel können nicht unbegrenzt oft hintereinander konsumiert
+werden, da sie zu einer Vergiftung führen können. Die einzigen Ausnahmen
+sind Äpfel und Apfelkuchen, die solange gegessen werden können, bis du
+deine Maximalenergie erreicht hast oder der Zugewinn an Energie deine
+Maximalenergie übersteigen würde.<br />
+Wie viel dein Ritter von einem Nahrungsmittel hintereinander essen kann,
+hängt von deiner Resistenz ab. Diese wird erhöht, wenn dein Ritter zu
+viel isst und infolgedessen eine Vergiftung erleidet und gilt für alle
+Nahrungsmittel mit Ausnahme von Äpfeln und Apfelkuchen.</p>
+<p>Nachdem dein Ritter etwas gegessen hat, sinkt der Faktor für eine
+mögliche Vergiftung allmählich. Wenn dein Ritter dich warnt, dass ihm
+schon schlecht ist, und du keine Vergiftung hervorrufen möchtest, musst
+du etwas warten, bis du erneut Nahrung konsumierst.</p>
+<p><em>TIPP</em>: Eine hohe Resistenz ist nicht unwichtig. Versuche
+also, die Resistenz gezielt mit Vergiftungen zu erhöhen, wenn dein
+Ritter zukünfitg mehr Nahrung in kurzer Zeit zu sich nehmen soll.</p>
+<h2 id="schlossgarten">Schlossgarten</h2>
+<p>Der Schlossgarten ist die zentrale Anlaufstelle für besondere
+Veranstaltungen im Königreich. Manchmal veranstaltet der König besondere
+Wettbewerbe oder andere Events, über die du dich dann im Schlossgarten
+informieren kannst. Insgesamt gibt es neben den Aushängen zur aktuellen
+Veranstaltung zwei weitere Bereiche:</p>
+<ul>
+<li>Regeln: Wenn du im Schlossgarten “Regeln” sagst, hörst du die Regeln
+des aktuellen Events</li>
+<li>Rangliste: Wenn du im Schlossgarten “Rangliste” sagst, erfährst du
+mehr über die aktuellen Spitzenreiter sowie deine Position bei einem
+Event, sofern es eine Rangliste gibt</li>
+</ul>
+<p>Du solltest regelmäßig im Schlossgarten vorbeischauen, um kein
+besonderes Event zu verpassen.</p>
+<h2 id="ritterspiele">Ritterspiele</h2>
+<p>Die Ritterspiele finden jeden Samstag den ganzen Tag über statt. Um
+teilzunehmen, suchst du dir am Freitag eine von drei Gilden aus, der du
+beitreten möchtest. Am Samstag gilt es dann, zusammen mit deiner Gilde
+so viele Ruhmpunkte in regulären Kämpfen zu sammeln, wie nur möglich.
+Hierbei haben verlorene Ruhmpunkte übrigens keinen negativen Einfluss,
+nur die gewonnenen Ruhmpunkte werden addiert.<br />
+Die drei Gilden unterscheiden sich immer allein durch ihren jeweiligen
+Namen. Wie viele Spieler einer Gilde bereits beigetreten sind, erfährst
+du nicht. Das soll verhindern, dass sich alle Spieler bei derselben
+Gilde anmelden. Höre stattdessen auf dein Bauchgefühl. ;-)<br />
+Die Teilnahme an den Ritterspielen kostet 25 Diamanten. Normalerweise
+wirst du am Freitag nach dem Öffnen des Skills automatisch gefragt, ob
+du teilnehmen möchtest. Ansonsten kannst du auch “Ritterspiele” sagen,
+um eine Gilde auszuwählen.<br />
+Während die Ritterspiele am Samstag ausgetragen werden, kannst du auch
+jederzeit “Ritterspiele” sagen, um zu erfahren, auf welchem Platz sich
+deine Gilde momentan befindet.</p>
+<h3 id="siegerehrung">Siegerehrung</h3>
+<p>Die Siegerehrung der Ritterspiele findet am Sonntag statt. Je nach
+Platzierung winken unterschiedliche Gewinne:<br />
+Die erstplatzierte Gilde erhält die eingesetzten Diamanten
+ausgeschüttet. Diese werden dann unter den Mitgliedern der
+Gewinner-Gilde aufgeteilt. Außerdem gibt es noch etwas Gold und
+Silberpfeile.<br />
+Die zweitplatzierte Gilde erhält keine Diamanten, dafür aber ebenfalls
+Gold und Silberpfeile.<br />
+Die drittplatzierte Gilde hingegen erhält ausschließlich etwas
+Gold.<br />
+Du siehst also, dass man bei den Ritterspielen eigentlich nur gewinnen
+kann. Es lohnt sich daher auf jeden Fall, sich jeden Freitag für eine
+der drei Gilden zu entscheiden.</p>
+<h2 id="jahrmarkt">Jahrmarkt</h2>
+<p>Bevor wir zur nächsten Kerndisziplin neben dem Kampf, nämlich der
+Jagd im Düsterwald, kommen, gibt es noch einen weiteren wichtigen Ort,
+den Jahrmarkt.<br />
+Der Jahrmarkt kommt jeden Dienstag in die Stadt. Du hast dann die
+Möglichkeit, am Rad der Entscheidung zu drehen und tolle Preise
+abzusahnen.<br />
+Um zum Jahrmarkt zu gelangen, sage einfach “Jahrmarkt”.<br />
+Sofern du Freilose besitzt, kannst du diese nun am Rad der Entscheidung
+einsetzen. Insgesamt hast du die Wahl zwischen drei
+Drehgeschwindigkeiten: Schwach, Mittel oder stark.<br />
+Solltest du keine Freilose mehr besitzen, kannst du auch pro Dreh fünf
+Diamanten bezahlen.<br />
+Außerdem gibt es die Option, sofern du noch Freilose besitzt, über den
+Rucksack mehr Lose zu kaufen. Suche dafür einfach in deinem Rucksack
+nach den Freilosen. Du wirst dann gefragt, ob du mehr Lose kaufen
+möchtest.</p>
+<p>Folgende Preise können auf dem Jahrmarkt gewonnen werden:</p>
+<ul>
+<li>Energie: <em>WICHTIG</em>: Du gewinnst auch dann Energie, wenn du
+deine Maximalenergie bereits erreicht hast, somit ist durch den Zugewinn
+von Energie auf dem Jahrmarkt mehr Energie als deine Maximalenergie
+speicherbar</li>
+<li>Gegenstände</li>
+<li>Leibeigene</li>
+<li>Freilose</li>
+<li>Diamanten</li>
+<li>Kampf-Bonuseigenschaften (selten)</li>
+<li>Schriftrollen (Sehr selten)</li>
+</ul>
+<p>Darüber hinaus erhöht sich mit jedem Dreh, bei dem du keine
+Kampf-Bonuseigenschaft gewonnen hast, die Wahrscheinlichkeit, beim
+nächsten Drehen eine zu gewinnen. Gerade wegen der Bonuseigenschaften
+ist es wichtig, jeden Dienstag am Jahrmarkt vorbeizuschauen und sich die
+Preise nicht entgehen zu lassen. Aber auch die anderen Ressourcen kann
+man immer sehr gut gebrauchen, außerdem kannst du mit Gegenständen, die
+du vielleicht nicht unbedingt brauchst, auch mit anderen Spielern
+handeln.</p>
+<h2 id="düsterwald">Düsterwald</h2>
+<p>Zusätzlich zum Kampf gibt es eine weitere wichtige Kerndisziplin, in
+der du deinen Ritter trainieren solltest, die Jagd im Düsterwald. Der
+Wald steht dir ab Level 5 zur Verfügung.<br />
+Um deinen Ritter in den Düsterwald zu schicken, sage einfach
+“Düsterwald”. Anders als im Kampf kannst du hier die Gegnersuche nicht
+selbst anstoßen, sondern dein Ritter begibt sich automatisch auf die
+Suche nach Orks, also den Hauptkreaturen, die du im Düsterwald jagst.
+Zur Erinnerung: Um schnell Orks zu finden, ist ein hoher Wert im Spuren
+Lesen wichtig. Vergiss aber neben dem Spuren Lesen auch nicht die
+anderen Werte.<br />
+Wenn dein Ritter einen Gegner gefunden hat, schießt er mit der
+angelegten Munition auf diesen. Sofern dein Ritter es schafft, den Ork
+zu erledigen, erhält er von der königlichen Jagdkompanie 10 Goldstücke
+und, sofern vorhanden, die Pfeile, die noch von anderen Rittern, die auf
+denselben Ork geschossen haben, in diesem stecken. Außerdem bekommt er
+für jeden Pfeil, den er abgeschossen hat sowie für jeden erledigten Ork
+Erfahrungspunkte.<br />
+Auch für die Jagd gibt es eine Rangliste, bei der die Abschüsse von Orks
+und anderen Gegnern über die Position entscheiden. Die Position auf der
+Jagd-Rangliste hörst du in unregelmäßigen Abständen im Düsterwald.
+Alternativ kannst du im Skill einfach “Jagd Rangliste” sagen.<br />
+Welche Arten von Orks oder anderen Kreaturen im Wald gefunden werden,
+hängt vom Jagd-Level ab. Je höher das Jagd-Level, umso stärkere Orks
+kann dein Ritter aufspüren.</p>
+<p>Im Düsterwald sind Pfeile die Hauptmunition. Sollte dein Ritter keine
+Pfeile haben, wirst du, nachdem du “Düsterwald” gesagt hast, darauf
+hingewiesen und kannst dir ein kleines Paket mit 200 Silberpfeilen für
+20 Diamanten kaufen. Später produzieren die Pfeilmacher die Pfeile für
+dich. Jeder Pfeilmacher erarbeitet dabei jede Stunde einen Silberpfeil.
+Zudem kannst du dir Köcher mit einem Vorrat an Silberpfeilen in der
+Jagdhütte kaufen.<br />
+Dein Ritter jagt nun so lange im Düsterwald, bis er keine Pfeile mehr
+hat oder du die Jagd beendest. Dies kannst du entweder mit dem Befehl
+“stopp” oder einfach durch das Öffnen des Skills tun.<br />
+Wenn die Jagd beendet wurde und du den Skill erneut öffnest, erfährst du
+auch, wie viele Orks du bei deiner letzten JAgd erledigen konntest und
+wie viele Goldstücke du erhältst. Wenn du ein oder mehrere Level
+aufsteigen konntest, kannst du außerdem direkt einen oder mehrere
+Jagd-Fertigkeitspunkte vergeben.<br />
+<em>TIPP</em>: Du kannst auch jederzeit “Mein Jagd Level” sagen, um zu
+erfahren, ob du noch freie Jagd-Fertigkeitspunkte übrig hast.</p>
+<p>Neben der eigentlichen Jagd gibt es im Wald noch deutlich mehr zu
+entdecken. So kann dein Ritter etwa Gegenstände wie Äpfel, Waldpilze
+oder auch einige Beeren finden, die dann in deinem Rucksack abgelegt
+werden. Es lohnt sich also, nach einem ausgiebigen Wald-Aufenthalt auch
+immer mal im Rucksack nachzusehen, was dein Ritter Schönes gefunden
+hat.<br />
+Darüber hinaus hörst du, während du dich im Düsterwald aufhältst,
+Ankündigungen zum Spiel, etwa, wenn ein Jagd- oder Kampfturnier in Kürze
+startet oder dein Schmied mit einem Upgrade fertig ist.</p>
+<h3 id="der-ork-hauptmann">Der Ork-Hauptmann</h3>
+<p>Die entscheidende Kreatur im Düsterwald ist der Ork-Hauptmann. Nur
+solange dieser lebt, ist auch der Düsterwald geöffnet. Schafft es ein
+Ritter, den Ork-Hauptmann zu erledigen, winkt ein ansehnliches Kopfgeld
+in Form von Diamanten. Zudem erhält der Ritter, der den Hauptmann
+erledigt, einen Bauplan für einen Wolfsmantel. Andernfalls erhöht sich
+das Kopfgeld täglich um 0 Uhr um ein paar Diamanten.<br />
+Wurde der Ork-Hauptmann erledigt, musst du bis zum nächsten Tag um 0 Uhr
+warten, bis der neue Hauptmann zurück ist und du den Wald wieder
+betreten kannst.<br />
+Auf den Ork-Hauptmann kann dein Ritter nur mit Pfeilen schießen. Andere
+Munition wird, selbst wenn diese angelegt sein sollte, nicht
+eingesetzt.</p>
+<h3 id="lebenspunkte-im-wald">Lebenspunkte im Wald</h3>
+<p>Beim Betreten des Waldes ist dir bestimmt aufgefallen, dass auch
+Lebenspunkte neben der Anzahl von Silberpfeilen angesagt wurden. Die
+Lebenspunkte im Wald sind die Gesamtlebenspunkte deines Ritters, die du
+schon vom Kampf kennst.<br />
+Eine hohe Anzahl an Lebenspunkten ist im Wald wichtig, da Orks dich auch
+angreifen können, solltest du sie verfehlen oder sie mit einem Treffer
+aufgrund von zu wenig Schaden nicht erledigen können. Wenn dir
+Lebenspunkte im Wald durch Angriffe von Orks verloren gehen, wirkt sich
+das aber nicht auf den Kampf aus; du hast also, solltest du im Wald
+Schaden erlitten haben, im Kampf weiterhin deine normalen Lebenspunkte
+zur Verfügung.<br />
+Um im Wald deine Lebenspunkte wieder aufzufüllen, gibt es verschiedene
+Möglichkeiten:</p>
+<ul>
+<li>Du hast Waldpilze gefunden und diese angelegt. Dein Ritter isst dann
+einen Waldpilz, wenn ihm 10 % oder mehr seiner Lebenspunkte fehlen.</li>
+<li>Du hast gebratene Pilze angelegt. Dein Ritter isst diese gebratenen
+Pilze immer dann, wenn ihm 75 % oder mehr Lebenspunkte im Wald
+fehlen.</li>
+<li>Ein anderer Ritter eilt dir zur Hilfe und heilt dich mit
+Heilkräutern</li>
+<li>Ein Jagdturnier startet, für das du dich angemeldet hast</li>
+<li>Dein Tag-Team-Partner ist gerade im Wald und kann dich schneller
+finden als andere Ritter und dich mit Heilkräutern heilen, sofern er
+welche angelegt hat</li>
+<li>Du besitzt einen oder mehrere Salate der Auferstehung und hast diese
+angelegt. Dein Ritter isst diesen Salat, sobald er keine Lebenspunkte
+mehr hat</li>
+</ul>
+<h3 id="ritter-heilen">Ritter heilen</h3>
+<p>Wie auch das Finden von Orks läuft der Prozess zum Aufspüren
+verwundeter Ritter automatisch. Solltest du Heilkräuter besitzen und
+diese angelegt haben und dann einen verwundeten Ritter finden, wird dein
+Ritter diesem mit einem Heilkraut helfen.<br />
+Heilkräuter kannst du selten in den Überresten von Orks oder durch die
+Jagdfähigkeit “Kräuterkunde” finden. Mehr zu den Jagdfähigkeiten
+erfährst du im abschnitt “Jagdhütte”.<br />
+Sollten dir deine Heilkräuter einmal ausgehen und du findest neue, musst
+du diese nicht erst erneut anlegen, sofern sie auch zuvor schon angelegt
+waren. Das soll dabei helfen, nicht ständig den Wald verlassen zu müssen
+und Ritter sofort heilen zu können, wenn Heilkräuter gefunden
+wurden.</p>
+<h3 id="die-nacht-im-düsterwald">Die Nacht im Düsterwald</h3>
+<p>während der Nacht (21 Uhr bis 6 Uhr) gibt es im Wald ein paar
+Besonderheiten:</p>
+<ul>
+<li>Du kannst spezielle Orks finden, sofern du das notwendige Jagd-Level
+dafür erreicht hast</li>
+<li>Besondere Geräuschkulisse</li>
+</ul>
+<p>Um 6 Uhr werden die in der Nacht erschienenen Orks verbrannt und
+können am Tag nicht aufgespürt werden.</p>
+<h3 id="ork-plagen">Ork-Plagen</h3>
+<p>Manchmal kann es vorkommen, dass sich eine Ork-Art im Düsterwald
+besonders stark ausbreitet. Im Spiel wird dann von einer Plage
+gesprochen.<br />
+Die Plagen werden sowohl im Skill als auch im Düsterwald während der
+Jagd angekündigt. Während einer Plage begegnet dein Ritter überwiegend
+der entsprechenden Ork-Art, die aktuell für eine Plage verantwortlich
+ist.<br />
+Sollte dein Ritter das erforderliche Jagd-Level für die Ork-Art, die
+eine Plage verursacht, noch nicht erreicht haben, findet er weiterhin
+nur die für seinen Level-Bereich sichtbaren Orks.</p>
+<h3 id="wolfsjagd">Wolfsjagd</h3>
+<p>Zusätzlich zum Aufspüren von Orks sei noch die Möglichkeit erwähnt,
+bestimmte Gegner im Düsterwald mit speziellen Items anlocken zu können.
+Aktuell ist der einzige Gegner, der zum Aufspüren mit einem Köder
+angelockt werden muss, der Wolf.<br />
+Um Wölfe finden zu können, muss dein Ritter Wolfsköder anlegen. Wölfe
+sind allerdings extrem schwer zu treffen und verfügen über sehr viele
+Lebenspunkte. Falls du Wolfsköder hast, solltest du warten, bis du im
+Wald stärker geworden bist.<br />
+Für jeden Wolf, den du erledigst, erhältst du ein Wolfsfell.</p>
+<p><em>WICHTIG</em>: Wölfe können nur mit Pfeilen beschossen werden.
+Auch das Einsetzen von Jagdfähigkeiten ist möglich.</p>
+<h3 id="jagdturniere">Jagdturniere</h3>
+<p>Wenn du dich im Wald gut zurecht findest, solltest du dir die
+Jagdturniere anschauen. Bei diesen kannst du deine Jagd-Fertigkeiten
+gegen andere Ritter unter Beweis stellen und dich bei verschiedenen
+Disziplinen behaupten.<br />
+Jagdturniere werden, sofern eines stattfindet, zehn Minuten vor Start im
+Skill und im Wald angekündigt. Die Turniere starten anschließend zur
+vollen Stunde und dauern 30 Minuten.<br />
+Um dich bei einem Jagdturnier anzumelden, öffne den Skill und sage
+“Jagdturnier”. Anschließend hörst du, welche Eintrittsgebühr du
+entrichten musst. Wenn du dich entscheidest, teilzunehmen, bestätige die
+Frage mit “ja”. Danach solltest du den Düsterwald aufsuchen. Die Aufgabe
+wird dann kurz nach Start des Turniers automatisch angekündigt.<br />
+Wie bei der regulären Jagd auch ist dein Ritter bei den Turnieren
+autonom im Wald unterwegs. Auch die Abschüsse werden ganz normal
+berechnet.<br />
+Während des Jagdturniers hörst du in unregelmäßigen Abständen, auf
+welcher Position du gerade stehst. Nach dem Ende des Jagdturniers kannst
+du einfach den Skill öffnen, um die Siegerehrung zu hören.<br />
+Am Ende eines Jagdturniers erhalten die drei besten Teilnehmer dann
+einen Gewinn, der sich aus den eingesetzten Diamanten ergibt. Platz 1
+erhält dabei 50 %, Platz 2 40 % und Platz 3 10 % der Diamanten.<br />
+Jeden Montag findet im Spiel zudem jede Stunde ein Jagdturnier statt.
+Die Teilnahmegebühr ist allerdings doppelt so hoch wie an anderen
+Tagen.</p>
+<p><em>TIPP</em>: Es gibt Gegenstände, die die Jagdeigenschaften deines
+Ritters temporär erhöhen. Nach der Bekanntgabe der Aufgabe des
+Jagdturniers kannst du auch kurz den Wald verlassen, um Jagdfähigkeiten
+zu ändern oder entsprechende Gegenstände anzulegen oder Nahrungsmittel
+zu essen.</p>
+<h3 id="übersicht-aller-kreaturen-im-düsterwald">Übersicht aller
+Kreaturen im Düsterwald</h3>
+<p>Nachfolgend findest du eine Übersicht über alle Orks und andere
+Gegner im Düsterwald:</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Ork</th>
+<th>Verfügbar ab</th>
+<th>Besonderheit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Ork-Späher</td>
+<td>Jagd-Level 1</td>
+<td>Keine</td>
+</tr>
+<tr class="even">
+<td>Bienenschwarm</td>
+<td>Jagd-Level 1</td>
+<td>Ritter erhält eine Honigwabe, wenn er die Bienen vertreiben
+kann</td>
+</tr>
+<tr class="odd">
+<td>Wolf</td>
+<td>Jagd-Level 1, nur mit angelegtem Wolfsköder</td>
+<td>Ritter erhält ein Wolfsfell, wenn er einen Wolf erledigt</td>
+</tr>
+<tr class="even">
+<td>Ork-Grunzer</td>
+<td>Jagd-Level 5</td>
+<td>Keine</td>
+</tr>
+<tr class="odd">
+<td>Ork-Krieger</td>
+<td>Jagd-Level 10</td>
+<td>Ritter kann unter Umständen ein Stück Ork Fleisch finden, wenn er
+diesen Ork erledigt</td>
+</tr>
+<tr class="even">
+<td>Ork-Schurke</td>
+<td>Jagd-Level 25</td>
+<td>Keine</td>
+</tr>
+<tr class="odd">
+<td>Ork-Gold-Träger</td>
+<td>Jagd-Level 50</td>
+<td>Ritter findet einige Goldstücke, wenn er diesen Ork erledigt</td>
+</tr>
+<tr class="even">
+<td>Ork-Sklaventreiber</td>
+<td>Jagd-Level 75</td>
+<td>Ritter erhält ein paar Leibeigene, wenn er diesen Ork erledigt</td>
+</tr>
+<tr class="odd">
+<td>Ork-Hexenmeister</td>
+<td>Jagd-Level 200, nur in der Nacht</td>
+<td>Beschwört Ork-Zombies, wenn er nicht erledigt wird / Ritter kann
+selten Schlüssel finden, wenn er einen Hexenmeister erledigt</td>
+</tr>
+<tr class="even">
+<td>Ork-Axtwerfer</td>
+<td>Jagd-Level 400</td>
+<td>Ritter erhält eine Wurfaxt und selten einen Wurfaxt Bauplan, wenn er
+diesen Ork erledigt</td>
+</tr>
+<tr class="odd">
+<td>Ork-Messer-Schwinger</td>
+<td>Jagd-Level 600</td>
+<td>Keine</td>
+</tr>
+<tr class="even">
+<td>Ork-Höllenhund</td>
+<td>Jagd-Level 800, nur in der Nacht</td>
+<td>Keine</td>
+</tr>
+<tr class="odd">
+<td>Ork-Zombie</td>
+<td>Jagd-Level 1000, nur in der Nacht</td>
+<td>Keine</td>
+</tr>
+<tr class="even">
+<td>Wildschwein</td>
+<td>Jagd-Level 1200</td>
+<td>Ritter erhält ein Stück Wildschwein Fleisch, wenn er das Tier
+erledigt</td>
+</tr>
+<tr class="odd">
+<td>Ork-Räuber</td>
+<td>Jagd-Level 1400</td>
+<td>Rauben Rittern einen zufälligen Gegenstand aus dem Rucksack / Ritter
+erhält alle bisher gestohlenen Gegenstände, wenn er diesen Ork
+erledigt</td>
+</tr>
+<tr class="even">
+<td>Ork-Säurespucker</td>
+<td>Jagd-Level 1600</td>
+<td>Keine</td>
+</tr>
+<tr class="odd">
+<td>Ork-Dolchwerfer</td>
+<td>Jagd-Level 1800</td>
+<td>Keine</td>
+</tr>
+</tbody>
+</table>
+<p><em>WICHTIG</em>: Da dein Ritter im Wald automatisch unterwegs ist,
+ist es empfehlenswert, immer dann, wenn du gerade nicht aktiv im Spiel
+unterwegs bist, in den Düsterwald zu gehen. Über Nacht lässt sich zudem
+einfach nach dem Betreten des Waldes die Lautstärke an deinem Echo-Gerät
+auf 0 stellen, der Ritter jagt aber weiter Orks und du kannst am
+nächsten Morgen deine Jagd-Fertigkeitspunkte vergeben und die Ausbeute
+von Gegenständen im Rucksack begutachten.</p>
+<h2 id="taverne">Taverne</h2>
+<p>Abseits des Kampfes und der Jagd ist die Taverne ein wichtiger
+Nebenschauplatz des Spiels. Hier hast du die Möglichkeit, gegen Rafael
+Karten zu spielen (Blackjack) oder deinen Ritter mit Tränken für eine
+gewisse Zeit aufzuwerten.<br />
+Um zur Taverne zu gelangen, sage einfach “Taverne”. Nun hast du die Wahl
+zwischen der Theke oder dem Kartenspielen.<br />
+<em>TIPP</em>: Du kannst auch direkt “Theke” oder “Karten spielen”
+sagen, ohne den Umweg über die Taverne zu nehmen. Das funktioniert aber
+erst, wenn du einmal den Befehl “Taverne” verwendet hast und die
+Geschichte in der Taverne bereits gespielt hast.</p>
+<h3 id="theke">Theke</h3>
+<p>Das bedeutendste Element in der Taverne stellt die Theke dar. Bei
+Marcel, dem Schankwirt, kannst du neben einem Krug Bier jeden Tag bis zu
+drei Tränke kaufen, die deinem Ritter eine Stunde lang einen bestimmten
+Vorteil verschaffen. Wie auch im Shop wechselt das Angebot hier täglich
+um 12 Uhr.<br />
+Es ist möglich, mehrere Tränke auf einmal einzusetzen, jedoch kannst du
+nicht gleichzeitig zwei Tränke desselben Typs aktivieren.<br />
+Die Tränke an der Theke werden mit Gold bezahlt und sind nach dem Kauf
+automatisch aktiv. Der Krug Bier ist kostenlos, hat aber auf deinen
+Ritter auch keinerlei Auswirkung.<br />
+Für jeden Trank gibt es 30 Qualitätsstufen. Je höher die Stufe eines
+Trankes ist, umso größer sind auch die Auswirkungen.<br />
+Nachfolgend findest du eine Übersicht über alle Tränke:</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Trank</th>
+<th>Effekt</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Kampftrank der Stärke</td>
+<td>+1 % Gesamtstärke pro Stufe</td>
+</tr>
+<tr class="even">
+<td>Trank der Unbeugsamkeit</td>
+<td>+1 % Gesamtverteidigung pro Stufe</td>
+</tr>
+<tr class="odd">
+<td>Trank des Glücks</td>
+<td>+1 % Gesamtglück pro Stufe</td>
+</tr>
+<tr class="even">
+<td>Hurtigkeitstrank</td>
+<td>+1% Gesamtgeschwindigkeit pro Stufe</td>
+</tr>
+<tr class="odd">
+<td>Meisterlicher Heiltrank</td>
+<td>+1% Gesamtlebenspunkte pro Stufe</td>
+</tr>
+<tr class="even">
+<td>Trank des Alten Krieges</td>
+<td>+1 % Erfahrungszugewinn pro Stufe (Zählt nicht bei der Jagd im
+Düsterwald)</td>
+</tr>
+</tbody>
+</table>
+<p><em>TIPP</em>: Wenn du einen Trank auswählen möchtest, kannst du
+anstelle des kompletten Namen des Tranks auch nur das jeweilige Attribut
+nennen. Beispielsweise kannst du den Kampftrank der Stärke auch einfach
+mit dem Befehl “Stärke” auswählen oder den Trank des Alten Krieges mit
+dem Befehl “Erfahrung”.</p>
+<h3 id="karten-spielen">Karten spielen</h3>
+<p>Wenn du zu viel Gold übrig hast und es bei einer Runde Blackjack
+riskieren möchtest, bist du bei Rafael an der richtigen Adresse. Sage
+“Karten spielen”, um dich zu Rafael an den Tisch zu setzen und die
+Spiele können beginnen.</p>
+<h2 id="schwarzer-turm">Schwarzer Turm</h2>
+<p>Ab Level 10 hast du neben dem Kampf und der Jagd im Düsterwald auch
+die Möglichkeit, deinen Ritter in den schwarzen Turm zu schicken. Dieser
+ist allerdings nur dann verfügbar, wenn Azrael, der böse Magier,
+versucht, die Herrschaft über das Königreich zu übernehmen.<br />
+Um zum schwarzen Turm zu gelangen, sage einfach “Schwarzer Turm”.</p>
+<p>Im Turm kämpfst du gegen fiktive Charaktere. Diese befinden sich auf
+den verschiedenen Ebenen des Turms. Ziel ist es, so viele Ebenen wie
+möglich zu erklimmen, um bestenfalls bis zur letzten Ebene und damit zum
+bösen Magier Azrael vorzudringen und diesen zu besiegen. Jeder Kampf im
+Turm kostet deinem Ritter 5 Energiepunkte.<br />
+Auf jeder Ebene triffst du einen Gegner an, jede zehnte Ebene wird als
+Boss-Level bezeichnet.<br />
+Gewinnst du im Turm einen Kampf, erhältst du neben Erfahrungspunkten
+auch Leibeigene, Gold und Diamanten.<br />
+<em>WICHTIG</em>: Ab Ebene 200 können Bosse im Turm nicht mehr mit der
+Fähigkeit “Durchbohren” oder “Bogenschuss (Kopftreffer bei Stufe 3)”
+besiegt werden. Passe deine Kampffähigkeiten also bei Boss-Leveln über
+Ebene 200 am besten an. Verwende dazu den Befehl “Kampffähigkeiten
+ändern”.</p>
+<h3 id="angriff-auf-das-königreich">Angriff auf das Königreich</h3>
+<p>Jeden Tag um 14 Uhr aktualisiert sich der Status des schwarzen Turms
+und der Fortschritt für die Vorbereitungen des Angriffs auf unser
+Königreich steigt. Ab der zweiten Aktualisierung (Im Regelfall 48
+Stunden nach Erwachen des Turms) ist es möglich, dass Azrael von einem
+Ritter noch vor Beginn des Angriffs auf das Königreich im direkten Kampf
+besiegt wird. Wenn es ein Ritter schafft, sich bis an die Spitze des
+Turms zu kämpfen und Azrael zu besiegen, ist der schwarze Turm im
+Anschluss verlassen und der Sieger erhält das sagenumwobene
+Donnerschwert. Dieses seltene Artefakt ermöglicht es, die legendäre
+Fähigkeit “Donnerschlag” einzusetzen.<br />
+Allerdings gelingt es nur selten Rittern, Azrael direkt zu besiegen.
+Normalerweise schließt der Magier seine Vorbereitungen nach ungefähr
+zwei Wochen nach Erwachen des Turms ab und der Angriff auf das
+Königreich beginnt.<br />
+Ab dann hat jeder Ritter die Möglichkeit, mit dem Befehl “Schwarzer
+Turm” Azrael anzugreifen und ihn in die Flucht zu schlagen.<br />
+Schafft es die Rittergemeinschaft, Azrael innerhalb von 24 Stunden nach
+Beginn des Angriffs zu besiegen, erhält derjenige, der Azrael mit dem
+finalen Schlag zur Strecke bringt, das Donnerschwert. Alle anderen, die
+Azrael ebenfalls angegriffen haben, erhalten eine kleine Belohnung des
+Königs in Form von 300 Diamanten.<br />
+Schaffen es die Ritter nicht, Azrael aufzuhalten, wird er den König aus
+dem Königreich entführen. Danach heißt es warten, bis ein neuer König
+gekrönt wird. In der Zeit der Abwesenheit des Königs gibt es auch keine
+Geschenke nach gewonnenen Kämpfen.<br />
+In beiden Fällen ist der Turm auch hier nach dem Spektakel verlassen und
+Azrael wird in absehbarer Zeit erneut zurückkehren, um das Königreich an
+sich zu reißen.</p>
+<h2 id="pfeilwerkstatt">Pfeilwerkstatt</h2>
+<p>Schon häufiger hast du jetzt von Pfeilmachern gehört. Dabei hast du
+dich sicher schon gefragt, wie man an Pfeilmacher kommt. Möglich ist
+dies über die Pfeilwerkstatt, die dir ab Level 15 zur Verfügung
+steht.<br />
+Brigitte, so der Name der Inhaberin der Pfeilwerkstatt, kann nämlich
+versuchen, Leibeigene deines Ritters in Pfeilmacher auszubilden. Um die
+Pfeilwerkstatt zu besuchen, sage “Pfeilwerkstatt”.<br />
+Anschließend kannst du dich entscheiden, ob und wie viele Leibeigene du
+in die Ausbildung schicken möchtest. Für den größtmöglichen Erfolg
+empfiehlt es sich, stets 100 Leibeigene je Ausbildung in die
+Pfeilwerkstatt zu schicken. Wenn du also beispielsweise 1.000 Leibeigene
+zu Pfeilmachern umwandeln möchtest, solltest du 10 Mal 100 Leibeigene in
+die Ausbildung schicken statt 1.000 auf einmal. Außerdem sei angemerkt,
+dass pro Ausbildung immer mindestens 100 Leibeigene in die
+Pfeilwerkstatt geschickt werden müssen.<br />
+Nach der Ausbildung stehen dir die Pfeilmacher direkt zur Verfügung und
+produzieren fortan jede Stunde neue Pfeile für dich. Anders als
+Leibeigene können diese dir nicht gestohlen werden und es gibt auch
+keine Grenze, wie viele Pfeilmacher du beschäftigen kannst.</p>
+<h2 id="jagdhütte">Jagdhütte</h2>
+<p>Wie im Kampf steht auch für die Jagd im Düsterwald die Option bereit,
+deinen Ritter mit zusätzlichen Jagdfähigkeiten und
+Jagd-Bonuseigenschaften auszustatten. Auch in der Jagdhütte wechselt das
+Angebot täglich um 12 Uhr. Zur Verfügung stehen immer drei Produkte:</p>
+<ul>
+<li>Jagdfähigkeit</li>
+<li>Jagd-Bonuseigenschaft</li>
+<li>Köcher mit Silberpfeilen</li>
+</ul>
+<p>Anders als im Shop werden die Jagdfähigkeiten und -bonuseigenschaften
+mit Pfeilmachern bezahlt. Die Köcher hingegen kosten deinem Ritter einen
+gewissen Diamanten-Betrag.<br />
+Wie auch im Shop gilt, dass du pro Tag nur eine Fähigkeit kaufen kannst.
+Die anderen Produkte sind allerdings nicht pro Tag auf eine Anzahl, die
+du kaufen kannst, beschränkt.</p>
+<h3 id="jagdfähigkeiten">Jagdfähigkeiten</h3>
+<p>Für die Jagd gibt es keine epischen Fähigkeiten, für deren Kauf oder
+Nutzung eine bestimmte Voraussetzung erfüllt sein muss. Eine
+Gemeinsamkeit zum Kampf gibt es aber dennoch: Maximal können bei der
+Jagd auch immer nur drei Fähigkeiten gleichzeitig aktiv sein. Um
+zwischen den aktiven Jagdfähigkeiten zu wechseln, sage einfach
+“Jagdfähigkeiten ändern” oder “Jagdfähigkeit festlegen”.<br />
+Auch bei den Jagdfähigkeiten gibt es verschiedene Stufen. Mit jeder
+Stufe steigt die Effektivität der Jagdfähigkeit weiter an.<br />
+Sofern du noch nicht drei verschiedene Jagdfähigkeiten gekauft hast,
+werden Jagdfähigkeiten nach dem Kauf direkt aktiviert. Erst ab der
+vierten und allen zukünftig erworbenen Jagdfähigkeiten musst du diese
+explizit aktivieren.</p>
+<p>Wann eine Jagdfähigkeit zum Einsatz kommt, hängt von der Chance
+dieser ab. Nachfolgend findest du einen Überblick über alle
+Jagdfähigkeiten.</p>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Fähigkeit</th>
+<th>Beschreibung (Stufe 1)</th>
+<th>Beschreibung (Stufe 2)</th>
+<th>Beschreibung (Stufe 3)</th>
+<th>Chance</th>
+<th>Verfügbar beim Ork-Hauptmann</th>
+<th>Verfügbar bei Wölfen</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mehrfachschuss</td>
+<td>Dein Ritter feuert in kurzer Zeit einen zusätzlichen Pfeil auf
+deinen Gegner.</td>
+<td>Dein Ritter zieht noch schneller und feuert somit insgesamt drei
+Pfeile ab.</td>
+<td>Dein Ritter wird so schnell, dass er insgesamt vier Pfeile auf
+seinen Gegner abfeuert.</td>
+<td>10 %</td>
+<td>Nein</td>
+<td>Ja</td>
+</tr>
+<tr class="even">
+<td>Gezielter Schuss</td>
+<td>Dein Ritter nimmt sich mehr Zeit und zielt genauer. Der Schaden
+verdoppelt sich.</td>
+<td>Deine Zielgenauigkeit steigt weiter an und ermöglicht den 3-fachen
+Schaden.</td>
+<td>Mit diesem gezielten Schuss auf den Kopf deines Gegners richtet
+dieser Schuss den 4-fachen Schaden an.</td>
+<td>15 %</td>
+<td>Nein</td>
+<td>Ja</td>
+</tr>
+<tr class="odd">
+<td>Tödlicher Schuss</td>
+<td>Keine Kompromisse. Der tödliche Schuss erlegt normale Gegner mit nur
+einem Treffer.</td>
+<td>Die Chance, einen tödlichen Schuss abzufeuern, steigt auf 4 %.</td>
+<td>Die Chance für den tödlichen Schuss erhöht sich auf das Maximum von
+6 %.</td>
+<td>2 %</td>
+<td>Nein</td>
+<td>Ja</td>
+</tr>
+<tr class="even">
+<td>Pfeilhagel</td>
+<td>Zielen unnötig. Dein Ritter feuert einen Hagel aus 10 Pfeilen
+Richtung Gegner. Mehrfache Treffer möglich.</td>
+<td>Kein entkommen. 20 Pfeile prasseln auf deinen Gegner hinab.</td>
+<td>Mit 30 Pfeilen, die Richtung Gegner fliegen, verdunkelt sich der
+Himmel.</td>
+<td>7 %</td>
+<td>Nein</td>
+<td>Ja</td>
+</tr>
+<tr class="odd">
+<td>Konzentration</td>
+<td>Erhöht die Chance, dass dein Ritter Jagdfähigkeiten einsetzt um 5
+%.</td>
+<td>Dein Ritter wird noch konzentrierter und die Chance, eine
+Jagdfähigkeit einzusetzen, steigt auf 10 %.</td>
+<td>Volle Konzentration. Dein Ritter setzt Fähigkeiten 15 % häufiger
+ein.</td>
+<td>Muss zur Nutzung mit anderen Jagdfähigkeiten aktiviert sein</td>
+<td>Ja</td>
+<td>Ja</td>
+</tr>
+<tr class="even">
+<td>Eis-Pfeil</td>
+<td>Kann den Hauptmann Einfrieren um zusätzlichen Schaden
+anzurichten.</td>
+<td>Friert den Hauptmann länger ein. Ein zusätzlicher Schuss ist
+möglich.</td>
+<td>Der Hauptmann bleibt sehr lange eingefroren und kann daher bis zu
+drei mal getroffen werden.</td>
+<td>15 %</td>
+<td>Ja</td>
+<td>Nein</td>
+</tr>
+<tr class="odd">
+<td>Adlerblick</td>
+<td>Dein Ritter sieht für kurze Zeit wie ein Adler und kann sofort
+mindestens die nächsten zwei Orks ausmachen.</td>
+<td>Dein Ritter kann länger durch die Augen des Adlers sehen und ist
+somit in der Lage, geringstenfalls, bis zu drei Orks direkt
+hintereinander zu erspähen.</td>
+<td>Dein Ritter schafft es, noch länger durch die Augen eines Adlers zu
+sehen, und sieht so mindestens vier Orks.</td>
+<td>5 %</td>
+<td>Unabhängig von Orks</td>
+<td>Unabhängig von Orks</td>
+</tr>
+<tr class="even">
+<td>Elektrischer Schlag</td>
+<td>Mit weißer Zauberkraft schleudert dein Ritter einen kurzen Blitz auf
+den Ork.</td>
+<td>Der Blitz wird stärker und richtet deutlich mehr Schaden an.</td>
+<td>Durch vollständige Überladung ist dieser Schock für jeden Gegner das
+Ende. Der Ritter kann sich dabei jedoch selbst verletzen.</td>
+<td>5 %</td>
+<td>Nein</td>
+<td>Ja</td>
+</tr>
+<tr class="odd">
+<td>Kräuterkunde</td>
+<td>Dein Ritter erlangt die Fähigkeit, seltene Kräuter zu erkennen und
+zu sammeln.</td>
+<td>Dein Ritter verbessert seine Kräuterkunde-Fähigkeiten und kann dann
+seltene Kräuter mit einer Erfolgschance von 4 % erkennen und
+sammeln.</td>
+<td>Dein Ritter bringt seine Kräuterkunde-Fähigkeit auf das höchste
+Niveau. Mit einer Erfolgschance von 6 % ist er dann in der Lage, die
+seltensten Kräuter zu finden und zu sammeln.</td>
+<td>2 %</td>
+<td>Unabhängig von Orks</td>
+<td>Unabhängig von Orks</td>
+</tr>
+</tbody>
+</table>
+<h3 id="jagd-bonuseigenschaften">Jagd-Bonuseigenschaften</h3>
+<p>Auch für die Jagd kannst du deinen Ritter mit Bonuseigenschaften
+ausstatten. Wie auch beim Kampf müssen Bonuseigenschaften nicht
+aktiviert werden, sondern zeigen direkt nach dem Kauf Wirkung.<br />
+Nachfolgend findest du einen Überblick über alle derzeit verfügbaren
+Jagd-Bonuseigenschaften.</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Jagd-Bonus</th>
+<th>Effekt</th>
+<th>Begrenzt auf</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Gehärtete Pfeilspitze</td>
+<td>+5 Durchschlagskraft</td>
+<td>Unbegrenzt</td>
+</tr>
+<tr class="even">
+<td>Optimierte Befederung</td>
+<td>+5 Genauigkeit</td>
+<td>Unbegrenzt</td>
+</tr>
+<tr class="odd">
+<td>Verbesserte Fährtenkunde</td>
+<td>+5 Spuren Lesen</td>
+<td>Unbegrenzt</td>
+</tr>
+<tr class="even">
+<td>Gesteigerte Lernfähigkeit</td>
+<td>+5% Erfahrungszugewinn im Düsterwald</td>
+<td>Unbegrenzt</td>
+</tr>
+<tr class="odd">
+<td>Erhöhte Kopfprämie</td>
+<td>+10 Goldstücke pro erledigtem Ork</td>
+<td>Unbegrenzt</td>
+</tr>
+</tbody>
+</table>
+<h2 id="briefkasten">Briefkasten</h2>
+<p>In deinem Briefkasten findest du Briefe und Geschenke, die dir andere
+Ritter oder fiktive Charaktere des Spiels wie der König gesendet haben.
+Um zum Briefkasten zu gelangen, sage “Briefkasten”.<br />
+Solltest du neue Geschenke oder Briefe haben, wird dir das auch im Skill
+angekündigt. Wenn du “Briefkasten” sagst, wird automatisch der erste
+Brief oder das erste Paket geöffnet.</p>
+<h3 id="geschenke-senden">Geschenke senden</h3>
+<p>Wenn du einem Spieler ein Geschenk senden möchtest, musst du zuerst
+nach einem Spieler suchen. Verwende dazu die Spielersuche, indem du
+entweder nach dem Spielernamen oder der Spielernummer suchst.<br />
+Wähle dann aus den Optionen “Geschenk senden” aus. Du wirst dann
+gefragt, was du versenden möchtest.<br />
+<em>TIPP</em>: Wenn du etwas aus deinem Rucksack versenden möchtest,
+kannst du bei der Frage, was du versenden möchtest, auch direkt einen
+beliebigen Gegenstand nennen.<br />
+Wenn du die Anzahl der Ressource, die du verschenken möchtest, genannt
+hast, erhältst du noch einmal eine Zusammenfassung deines Pakets und
+kannst es anschließend absenden.<br />
+Wenn du das Geschenk verschickt hast, dauert es ungefähr eine Stunde,
+bis das Paket beim Empfänger im Briefkasten ankommt. Solltest du dein
+tägliches Geschenkelimit erreicht haben, erhöht sich die Zeit der
+Auslieferung und du erhältst eine entsprechenden Hinweis. Wie viele
+Geschenke du pro Tag mit einer festen Lieferzeit von einer Stunde
+versenden kannst, hängt von deiner Kampfklasse ab.<br />
+Wenn du die Transportzeit verkürzen möchtest, kannst du auch den Boten
+mit 5 Diamanten bestechen. Dein Paket wird dann innerhalb der nächsten 5
+Minuten beim Empfänger eintreffen. Das funktioniert auch dann, wenn dein
+Geschenkelimit schon erreicht wurde.</p>
+<h3 id="briefe-schreiben">Briefe schreiben</h3>
+<p>Wenn du einem anderen Spieler einen Brief schreiben möchtest,
+verwendest du ebenfalls die Spielersuche. Suche einfach nach dem
+Spielernamen oder der Spielernummer und wähle dann die Option “Brief
+schreiben”. Folge dann den genannten Anweisungen, um deinen Brief zu
+verfassen und abzusenden.<br />
+Wenn du selbst einen Brief erhalten und ihn im Briefkasten gelesen hast,
+kannst du auch direkt auf den Brief antworten, ohne zuerst nach dem
+Spieler zu suchen.</p>
+<p><em>TIPP</em>: Briefe, die du an nicht deutschsprachige Spieler
+sendest oder Spieler dir aus dem internationalen Raum an dich senden,
+werden automatisch übersetzt. Achte darauf, dass es unter Umständen zu
+Übersetzungsfehlern kommen kann. Du kannst auch jederzeit “Wiederholen”
+sagen, falls du etwas nicht richtig verstanden haben solltest.</p>
+<p><em>WICHTIG</em>: Spieler können die Brief-Funktion deaktivieren, um
+keine Briefe mehr von anderen Spielern zu erhalten. Sage “Briefe
+deaktivieren”, wenn du keine Briefe von anderen Rittern empfangen
+möchtest. Wenn andere Spieler nach dir suchen, wird die Option, einen
+Brief zu schreiben, auch nicht mehr angesagt.</p>
+<h2 id="handel">Handel</h2>
+<p>Mit der Handelsfunktion können Ritter sicher Ressourcen tauschen. Du
+kannst entweder einem anderen Ritter einen Handel vorschlagen oder dir
+auf dem Marktplatz empfangene Handelsangebote anhören und dann
+entscheiden, ob du diese annehmen oder ablehnen möchtest.</p>
+<h3 id="handel-vorschlagen">Handel vorschlagen</h3>
+<p>Um einem anderen Ritter ein Angebot zu unterbreiten, verwendest du
+wieder die Spielersuche, um nach einem Ritter per Namen oder
+Spielernummer zu suchen. Wähle anschließend die Option “Handel
+vorschlagen”.<br />
+Nun hast du die Möglichkeit, einen Gegenstand auszuwählen, den du dem
+Spieler anbieten möchtest. Hier kannst du alles direkt nennen, was du
+besitzt. Eine Navigation über den Rucksack ist nicht möglich.<br />
+Solltest du einen Gegenstand nennen, den du gar nicht besitzt, weist
+dich das System darauf hin.<br />
+Im nächsten Schritt sagst du die Anzahl, die du anbieten möchtest. Im
+Anschluss daran wählst du die Ressource aus, die du als Gegenleistung
+haben möchtest und nennst dann ebenfalls wieder die Anzahl.<br />
+Abschließend hörst du noch einmal eine Zusammenfassung des Angebots und
+hast dann die Möglichkeit, das Angebot an den Spieler zu übermitteln.
+Deine angebotene Ware wird sofort abgezogen und der Spieler hat ab dann
+sechs Stunden Zeit, das Angebot über den Marktplatz anzunehmen oder
+abzulehnen.<br />
+Sollte innerhalb der sechs Stunden keine Reaktion erfolgen, wird dir die
+angebotene Ware automatisch als Paket von der königlichen Handelskammer
+in deinen Briefkasten zugestellt.</p>
+<p><em>WICHTIG</em>: Insgesamt kannst du gleichzeitig maximal 5
+Handelsangebote senden. Dabei ist es unwichtig, ob du 5 Angebote an
+denselben Spieler oder an verschiedene Spieler gesendet hast.</p>
+<h3 id="marktplatz">Marktplatz</h3>
+<p>Wenn du selbst Angebote erhalten hast, kannst du jederzeit
+“Marktplatz” sagen, um sie dir anzuhören und zu entscheiden, ob du sie
+annehmen möchtest. Im Skill wirst du auch darauf hingewiesen, ob es ein
+neues Handelsangebot auf dem Marktplatz gibt.<br />
+Nachdem du “Marktplatz” gesagt hast, wird dir das neueste Angebot
+angesagt. Du hast dann die Möglichkeit, es anzunehmen oder den Handel
+abzulehnen.<br />
+Gehst du einen Handel ein, dauert es ungefähr eine Stunde, bis sich das
+Paket mit der Ware von der königlichen Handelskammer in deinem
+Briefkasten befindet. Lehnst du es ab, erhält der Ritter, der dir das
+Angebot unterbreitet hat, seine Ware innerhalb von 10 Minuten von der
+königlichen Handelskammer in Form eines Pakets im Briefkasten
+zurück.</p>
+<p><em>WICHTIG</em>: Wenn du versuchst, einen Handel anzunehmen und die
+Ressourcen gar nicht hast, wird der Handelsvorschlag automatisch
+abgelehnt. Es ist also nicht notwendig, erst nachzuschauen, ob du den
+Handel überhaupt eingehen kannst.</p>
+<h2 id="kampfturniere">Kampfturniere</h2>
+<p>Auch im Kampf kannst du dich in Turnieren bei unterschiedlichen
+Disziplinen gegen andere Ritter behaupten. Kampfturniere werden immer 15
+Minuten vor Start im Skill und im Düsterwald angekündigt. Sie starten
+zur vollen Stunde und dauern anschließend 30 Minuten. Die Teilnahme
+kostet wie bei den Jagdturnieren ein paar Diamanten.<br />
+Um deinen Ritter anzumelden, sage nach der Ankündigung einfach
+“Kampfturnier”. Du erfährst dann, wie viele Diamanten du entrichten
+müsstest und kannst dich entscheiden, ob du teilnehmen möchtest.<br />
+Damit jeder Spieler unabhängig von der Maximalenergie dieselben Chancen
+hat, zählen nach Start des Kampfturniers die ersten 25 Kämpfe als
+Turnierkämpfe und kosten dich keine Energie. Beim Kampfturnier kämpfst
+du zudem in deinem Kampfumfeld. Das bedeutet, dass die Gegnersuche wie
+beim regulären Kampf ausgehend von deiner Ranglistenposition stattfindet
+und entweder der normale oder der zufällige Kampfmodus zum Einsatz
+kommt.<br />
+Um einen Turnierkampf zu starten, sage nach Turnierstart einfach “Kampf”
+oder “Schnellkampf”. Beim ersten Turnierkampf hörst du dann die Aufgabe,
+die bei diesem Turnier zu meistern ist.<br />
+Falls du die Aufgabe des Kampfturniers zum Start verpasst haben
+solltest, kannst du während des Turniers jederzeit “Kampfturnier” sagen.
+Dir wird dann die Aufgabe mitgeteilt und du erfährst darüber hinaus
+noch, wer zurzeit auf dem Siegertreppchen steht.<br />
+Wenn du vor Ablauf der 30 Minuten keine Turnierkämpfe übrig haben
+solltest, wirst du nach dem letzten Turnierkampf darauf hingewiesen,
+dass du alle Turnierkämpfe absolviert hast. Wenn du während des Turniers
+“Kampfturnier” sagst, erfährst du ebenfalls, wie viele Turnierkämpfe du
+noch übrig hast und wie lange das Turnier noch läuft. Achte darauf, in
+jedem Fall vor Ablauf der 30 Minuten deine Turnierkämpfe zu
+absolvieren.</p>
+<p>Während eines Kampfturniers gelten ein paar Sonderregelungen:</p>
+<ul>
+<li>In Turnierkämpfen können keine Leibeigenen von anderen Rittern
+gestohlen werden</li>
+<li>Turnierkämpfe zählen nicht zu deinen Ruhmpunkten, du kannst bei
+Turnierkämpfen also keine Ruhmpunkte gewinnen oder verlieren</li>
+<li>Turnierkämpfe bringen deinem Ritter keine Erfahrungspunkte</li>
+</ul>
+<p>Ansonsten wird ein Turnierkampf wie ein regulräer Kampf behandelt.
+Das heißt, auch Tränke und andere Gegenstände wirken sich ganz normal
+auf die Eigenschaften deines Ritters aus.</p>
+<h3 id="siegerehrung-1">Siegerehrung</h3>
+<p>Nach dem Ende des Kampfturniers hörst du im Skill eine entsprechende
+Ankündigung. Sage anschließend “Kampfturnier”, um dir die Siegerehrung
+anzuhören.<br />
+Wie bei den Jagdturnieren auch werden alle eingesetzten Diamanten unter
+den Siegern aufgeteilt. Der Erstplatzierte erhält 50 %, der
+Zweitplatzierte 40 % und der Drittplatzierte 10 % der Diamanten.</p>
+<p><em>TIPP</em>: Wenn du dir nicht sicher bist, ob zur nächsten Stunde
+ein Kampfturnier stattfindest, kannst du einfach jederzeit
+“Kampfturnier” sagen. Die Siegerehrung ist nämlich nur bis zur
+Ankündigung des nächsten Kampfturniers abrufbar, ansonsten wird dir die
+Anmeldung angeboten.</p>
+<h2 id="orden">Orden</h2>
+<p>Zu Beginn hast du bereits erfahren, dass RitterManager auf einem
+Runden-System basiert. Das Kernelement einer jeden Runde, also einer
+Saison, ist der Orden.<br />
+Mit Erreichen von Level 50 wird dein Ritter automatisch einem der drei
+folgenden Orden zugewiesen:</p>
+<ul>
+<li>Lazarus-Orden</li>
+<li>Meridian-Orden</li>
+<li>Orden der Barmherzigen</li>
+</ul>
+<p>Als Ordensmitglied ist es deine Aufgabe, zusammen mit den anderen
+Ordensbrüdern die Saison zu gewinnen. Über den Gesamtsieg entscheiden
+die erforderlichen Ordenspunkte, die ihr gemeinsam als Orden zuerst
+erreichen müsst. Wenn ein Orden die benötigte Anzahl der Ordenspunkte
+erreicht hat, wird die aktuell laufende Saison beendet und ein neues
+Zeitalter startet.<br />
+Pro Tag kannst du entsprechend deines Levels eine maximale Anzahl an
+Punkten für deinen Orden sammeln. Jedes zusätzliche Level ermöglicht
+dir, einen weiteren Ordenspunkt pro Tag zu sammeln. Wenn du also
+beispielsweise Level 100 erreicht hast, kannst du pro Tag maximal 100
+Ordenspunkte sammeln.</p>
+<p>Folgende Aktionen im Spiel bringen dir und deinem Orden
+Ordenspunkte:</p>
+<ul>
+<li>Kämpfe gewinnen</li>
+<li>Orks erledigen</li>
+</ul>
+<p>Alle Ordenspunkte, die du und die anderen Ordensmitglieder sammeln,
+werden zu den Gesamt-Ordenspunkten gezählt. Um abzufragen, auf welchem
+Platz dein Orden momentan steht, sage “Mein Orden”. Um deine
+Ordenspunkte abzufragen, sage stattdessen “Meine Ordenspunkte”.<br />
+<em>WICHTIG</em>: Wenn du das Maximum deiner täglichen Ordenspunkte
+erreicht hast, wird dir das auch im Skill mitgeteilt.</p>
+<h3 id="besondere-leistungen-für-mehr-ordenspunkte">Besondere Leistungen
+für mehr Ordenspunkte</h3>
+<p>Damit sich dein Orden effektiv gegen die anderen behaupten kann, gibt
+es neben dem Sammeln der täglichen Ordenspunkte im Kampf oder Düsterwald
+noch weitere Möglichkeiten, zusätzliche Punkte für deinen Orden zu
+erlangen.<br />
+Die folgenden besonderen Leistungen bescheren deinem Orden unabhängig
+von deinen täglichen Ordenspunkten zusätzliche Punkte:</p>
+<ul>
+<li>Besiegen des bösen Magiers Azrael: 20.000 Ordenspunkte</li>
+<li>Erledigen des Ork-Hauptmanns: 5.000 Ordenspunkte</li>
+<li>Mitglied der erstplatzierten Gilde bei den Ritterspielen: 100
+Ordenspunkte</li>
+<li>Mitglied der zweitplatzierten Gilde bei den Ritterspielen: 50
+Ordenspunkte</li>
+<li>Mitglied der drittplatzierten Gilde bei den Ritterspielen: 25
+Ordenspunkte</li>
+<li>Besiegen des Drachen in der Drachenhöhle: 20.000 Ordenspunkte</li>
+</ul>
+<h3 id="ordenshalle-und-upgrades">Ordenshalle und Upgrades</h3>
+<p>In der Ordenshalle haben alle Mitglieder eines Ordens die
+Möglichkeit, zusammen einige Upgrades durchzuführen, von denen dann alle
+Ordensbrüder profitieren. Die Upgrades werden gestartet, sobald die
+erforderlichen Ressourcen zusammengetragen wurden.<br />
+Um zu erfahren, welche Upgrades bereits durchgeführt wurden oder welche
+gerade verbessert werden, sage “Ordenshalle”. In der Ordenshalle kannst
+du auch selbst eines der drei Upgrades auswählen und dafür Gold oder
+Leibeigene spenden.<br />
+<em>WICHTIG</em>: Solltest du mehr spenden, als für das gewählte Upgrade
+noch erforderlich war, wird dir auch nur der erforderliche Betrag
+abgezogen. Sind also beispielsweise für ein Upgrade noch 100.000
+Goldstücke erforderlich, du spendest aber 200.000, werden dir auch nur
+100.000 Gold abgezogen.<br />
+Nachfolgend findest du eine Übersicht über die derzeit verfügbaren
+Ordens-Upgrades.</p>
+<h4 id="schrein-des-glücks">Schrein des Glücks</h4>
+<p>Erhöht das Basisglück aller Ordensbrüder um 1 % pro Stufe</p>
+<ul>
+<li>Verfügbare Stufen: Unbegrenzt</li>
+<li>Erforderliche Ressourcen: Gold</li>
+</ul>
+<h4 id="denkmal-der-hast">Denkmal der Hast</h4>
+<p>Erhöht die Basisgeschwindigkeit aller Ordensbrüder um 1 % pro
+Stufe</p>
+<ul>
+<li>Verfügbare Stufen: Unbegrenzt</li>
+<li>Erforderliche Ressourcen: gold</li>
+</ul>
+<h4 id="lehranstalt-der-leibeigenen">Lehranstalt der Leibeigenen</h4>
+<p>Erhöht die Chance, Leibeigene in der Pfeilwerkstatt in Pfeilmacher
+auszubilden, um 1 % pro Stufe</p>
+<ul>
+<li>Verfügbare Stufen: 50</li>
+<li>Erforderliche Ressourcen: Leibeigene</li>
+</ul>
+<p>Zur Erinnerung: Um die Berechnung des Gesamtwerts eines Attributs
+deines Ritters zu hören, kannst du jederzeit “Meine Stärke” oder ein
+beliebiges anderes Attribut sagen.</p>
+<h3 id="saisonwechsel">Saisonwechsel</h3>
+<p>Wenn ein Orden 100 % der benötigten Ordenspunkte erreicht hat, wird
+die aktuelle Saison beendet und ein neues Zeitalter beginnt. Alle Ritter
+und die Ranglisten werden zurückgesetzt und der Kampf um den Gesamtsieg
+beginnt von vorne. Ein paar Dinge bleiben deinem Ritter aber auch nach
+einem Saisonneustart erhalten:</p>
+<ul>
+<li>Freilose im Rucksack</li>
+<li>Diamanten</li>
+<li>Kampffähigkeiten</li>
+<li>Kampf-Bonuseigenschaften</li>
+</ul>
+<p>Die Kampf-Bonuseigenschaften müssen nach einem Saisonneustart
+allerdings erst freigeschaltet werden. Jeder Fertigkeitspunkt schaltet
+drei Bonuseigenschaften für das gewählte Attribut frei. Du hörst auch
+immer, wie viele Boni du noch freischalten kannst, nachdem du einen
+Fertigkeitspunkt vergeben hast oder “Meine Kampf Bonuseigenschaften”
+sagst. Die Boni “Ketten”, “Animateur”, “Federbett”, “Ausgewogene
+Ernährung” und “Gelehrigkeit” müssen nicht freigeschaltet werden.<br />
+Sollte dein Ritter beim Saisonwechsel über mehr Energie als seine
+Maximalenergie verfügen, wird diese ebenfalls übernommen. Andernfalls
+startest du die neue Saison mit deiner Maximalenergie.<br />
+Unter Umständen werden auch noch weitere Gegenstände mit in eine neue
+Saison übernommen. Sollte dies der Fall sein, wird das rechtzeitig auf
+der <a href="https://www.knight-manager.com/">RitterManager-Webseite</a>
+im Bereich “Neuigkeiten” angekündigt.</p>
+<h2 id="provinzkampf">Provinzkampf</h2>
+<p>Jeden Sonntag finden von 12 bis 22 Uhr die Provinzkämpfe statt. Dabei
+kämpfen die drei Orden um eine Provinz, die dem Orden, der den
+Provinzkampf gewinnt, einen Vorteil im Spiel verschafft.<br />
+Insgesamt gibt es vier Provinzen, um die abwechselnd gekämpft wird:</p>
+<ul>
+<li>Dunkelküste: 25 % Rabatt beim Schmied</li>
+<li>Hügelland: +10% Erfahrungszugewinn (Nicht bei der Jagd im
+Düsterwald)</li>
+<li>Sümpfe des Elends: 20 % Rabatt in der Jagdhütte</li>
+<li>Pestländer: +15 % Gold pro Stunde von deinen Leibeigenen</li>
+</ul>
+<p>Die Auswahl der Provinzen ist nicht zufällig, sondern fortlaufend.
+Wurde etwa um die Pestländer gekämpft, wird in der folgenden Woche
+wieder um die Dunkelküste gekämpft. Hierdurch ist es möglich, dass ein
+Orden auch mehrere Provinzen halten kann.</p>
+<h3 id="ablauf-des-provinzkampfs">Ablauf des Provinzkampfs</h3>
+<p>Nach dem Start des Provinzkampfs kannst du einfach “Provinzkampf”
+sagen, um einen Kampf zu starten oder zu erfahren, auf welchem Platz
+gerade welcher Orden steht.<br />
+Jeder Provinzkampf kostet dich eine Provinzmünze. Provinzmünzen erhältst
+du jeden Sonntag nach dem Ende des Provinzkampfs oder manchmal als
+Geschenk vom König nach einem gewonnenen regulären Kampf. Wie viele
+Provinzmünzen du bekommst, hängt von der Platzierung deines Ordens beim
+letzten Provinzkampf ab:</p>
+<ul>
+<li>Erstplatzierter Orden: 30 Provinzmünzen</li>
+<li>Zweitplatzierter Orden: 40 Provinzmünzen</li>
+<li>Drittplatzierter Orden: 50 Provinzmünzen</li>
+</ul>
+<p>Wie viele Provinzmünzen du aktuell hast, kannst du jederzeit über
+deinen Rucksack in Erfahrung bringen. Alternativ kannst du auch direkt
+“Meine Provinzmünzen” sagen.<br />
+<em>WICHTIG</em>: Du erhältst nur Provinzmünzen nach dem Ende eines
+Provinzkampfes, wenn du die Grenze von 100 Münzen noch nicht
+überschritten hast. Außerdem erhältst du, wenn die Provinzmünzen, die du
+nach dem Provinzkampf bekommst, über die Grenze von 100 hinausgehen
+würden, auch nur die Differenz an Provinzmünzen. Durch Geschenke des
+Königs nach gewonnenen Kämpfen ist es aber möglich, auch über 100 Münzen
+zu sammeln.</p>
+<p>Über die Platzierung deines Ordens beim Provinzkampf entscheiden die
+Provinzmarken, die du für gewonnene Provinzkämpfe erhältst. Nach jedem
+gewonnenen Provinzkampf hast du die Wahl, die Marken zu sichern oder
+weiterzukämpfen.<br />
+Wenn du weiterkämpfst, sinken deine Kampfwerte jeden zusätzlichen Kampf,
+den du nicht verlierst, um 10 %, bis sie maximal um 80 % gesunken sind.
+Wenn du beim Weiterkämpfen verlierst oder die Marken sicherst, kämpfst
+du im anschließenden Provinzkampf wieder mit deinen normalen
+Ausgangsattributen.<br />
+Trotz des Risikos gibt es beim Weiterkämpfen einen entscheidenden
+Vorteil: Schon beim zweiten gewonnenen Provinzkampf in Folge bekommst du
+mehr Provinzmarken, als wenn du zuerst einen Provinzkampf gewonnen, die
+Marke gesichert und dann erneut einen Provinzkampf bestritten und
+gewonnen hättest.</p>
+<p>Die Gegnersuche beim Provinzkampf ist zufällig, es werden allerdings
+nur Gegner aus den konkurrierenden Orden gefunden. Du kannst also unter
+Umständen auch gegen den stärksten Ritter eines anderen Ordens antreten.
+Man sollte daher genau abwägen, ob man weiterkämpfen oder die Marke eher
+sichert.</p>
+<p>Für die Provinzkämpfe gelten zudem ein paar Sonderregelungen:</p>
+<ul>
+<li>Du erhältst keine Ruhmpunkte für gewonnene Provinzkämpfe und
+verlierst auch keine bei verlorenen Provinzkämpfen</li>
+<li>Tag-Team-Partner unterstützen dich nicht im Provinzkampf</li>
+<li>Du kannst keine Leibeigenen von anderen Rittern in Provinzkämpfen
+stehlen</li>
+<li>Provinzkämpfe kosten dich keine Energie</li>
+</ul>
+<p><em>WICHTIG</em>: Tränke und andere Gegenstände wirken sich ganz
+normal auf die Eigenschaften deines Ritters aus.</p>
+<h3 id="siegerehrung-2">Siegerehrung</h3>
+<p>Der Sieger des Provinzkampfes wird nach dem Ende um 22 Uhr
+automatisch im Skill verkündet. Der Gewinner-Orden hält anschließend die
+Provinz, bis erneut um sie gekämpft wird und der Orden den Kampf
+verlieren sollte.</p>
+<h2 id="arbeitskammer">Arbeitskammer</h2>
+<p>In der Arbeitskammer kann dein Ritter ab Level 60 aus vorhandenen
+Ressourcen an der Werkbank oder am Kochtopf neue Gegenstände herstellen.
+Voraussetzung dafür ist, dass er den erforderlichen Bauplan oder das
+Rezept zur Herstellung des Gegenstands erlernt hat.<br />
+Rezepte und Baupläne, allgemeiner als Schriftrollen bezeichnet, können
+zufällig an vielen Stellen im Spiel gefunden werden. Um zu überprüfen,
+welche Schriftrollen dein Ritter aktuell besitzt, navigiere im Rucksack
+zur Kategorie “Schriftrollen”. Diese wird dir auch nur dann angesagt,
+wenn du auch Schriftrollen besitzt.<br />
+Um einen Bauplan oder ein Rezept zu erlernen, musst du den
+entsprechenden Gegenstand im Rucksack benutzen. Dein Ritter erlernt
+anschließend die Anleitung zur Herstellung des Gegenstands und die
+Schriftrolle verschwindet aus deinem Rucksack.<br />
+Manche Schriftrollen benötigen eine bestimmte Anzahl an Ingenieurskunst-
+oder Kochkunst-Punkten. Beide Fähigkeiten werden erhöht, wenn du
+Gegenstände in der Arbeitskammer herstellst. Nahrungsmittel werden dabei
+am Kochtopf hergestellt, während alle anderen Gegenstände an der
+Werkbank produziert werden.<br />
+Am Kochtopf oder an der Werkbank erfährst du zudem, welche Gegenstände
+dein Ritter aktuell herstellen kann. Wähle einen Gegenstand aus, um mit
+der Herstellung zu beginnen. Du hörst anschließend auch die
+erforderlichen Zutaten, die zur Herstellung benötigt werden.</p>
+<p><em>TIPP</em>: Um zur Werkbank oder dem Kochtopf zu gelangen, musst
+du nicht jedesmal erst “Arbeitskammer” sagen. Du kannst stattdessen auch
+direkt “Werkbank” oder “Kochtopf” sagen.</p>
+<h3 id="baupläne">Baupläne</h3>
+<p>Nachfolgend findest du eine Übersicht über alle verfügbaren Baupläne
+sowie die benötigte Anzahl an Ingenieurskunst-Punkten.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Bauplan</th>
+<th>Benötigte Ingenieurskunst-Punkte</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Thorium Pfeil</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>Silberbarren</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>Wurfaxt</td>
+<td>10</td>
+</tr>
+<tr class="even">
+<td>Thorium Speer</td>
+<td>15</td>
+</tr>
+<tr class="odd">
+<td>Schuppenschild</td>
+<td>15</td>
+</tr>
+<tr class="even">
+<td>Wolfsmantel</td>
+<td>25</td>
+</tr>
+<tr class="odd">
+<td>Drachensattel</td>
+<td>35</td>
+</tr>
+</tbody>
+</table>
+<h3 id="rezepte">Rezepte</h3>
+<p>Nachfolgend findest du eine Übersicht über die verfügbaren Rezepte
+und die benötigte Anzahl an Kochkunst-Punkten.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Rezept</th>
+<th>Benötigte Kochkunst-Punkte</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Apfelkuchen</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>Portion Gebratene Pilze</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>Beereneintopf</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>Wolfsköder</td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td>Kleine Mahlzeit</td>
+<td>15</td>
+</tr>
+<tr class="even">
+<td>Große Mahlzeit</td>
+<td>25</td>
+</tr>
+<tr class="odd">
+<td>Drachenmahl</td>
+<td>30</td>
+</tr>
+<tr class="even">
+<td>Salat der Auferstehung</td>
+<td>Information steht noch aus</td>
+</tr>
+</tbody>
+</table>
+<h2 id="drachenfels">Drachenfels</h2>
+<p>Der Aufstieg zum Drachenfels war viele Zeitalter versperrt, doch
+jetzt hat der König ihn infolge einer schweren Entscheidung wieder
+freigegeben, da er nur so die Chance sieht, sich als Gemeinschaft gegen
+die Drachen zu wehren, sollten sie unser Königreich heimsuchen. Ab Level
+80 ist es deinem Ritter möglich, den Drachenfels zu erklimmen und die
+Bergspitze, die Drachenhöhle sowie das Drachennest aufzusuchen.<br />
+Um zum Drachenfels zu gelangen, sage einfach “Drachenfels”. Manchmal
+kommt dir auch eine alte Dame entgegen, die dir spannende Geschichten
+über die Drachen aus den längst vergangenen Epochen erzählen kann.</p>
+<h3 id="bergspitze">Bergspitze</h3>
+<p>Schon damals sahen einige Ritter einen besonderen Reiz darin, Drachen
+in das Königreich zu locken, um sich selbst herauszufordern. Dazu
+platzierten sie besonders viele Reichtümer auf der Spitze des Berges,
+vornehmlich wurde Gold eingesetzt.<br />
+Da der Drachenfels jetzt wieder freigegeben ist, besteht auch heute
+wieder die Möglichkeit, einen Drachen anzulocken. Voraussetzung dafür
+ist, dass genügend Goldstücke auf der Bergspitze liegen.<br />
+Um zur Bergspitze zu gelangen und selbst Gold abzulegen, sage
+“Drachenfels”, gefolgt von “Bergspitze”. Alternativ kannst du auch
+direkt “Bergspitze” sagen.<br />
+Danach kannst du dich entscheiden, ob du selbst auch Goldstücke ablegen
+möchtest.<br />
+Nachdem du Gold auf der Bergspitze abgelegt hast, hörst du auch, wie
+viele Goldstücke bereits einer groben Einschätzung nach insgesamt auf
+dem Berg liegen. Wie viele Goldstücke letztendlich insgesamt
+erforderlich sind, damit ein Drache ins Königreich gelockt wird, ist
+nicht bekannt.</p>
+<p>Wenn ein Drache im Königreich gesichtet wird, wird dies auch im Skill
+angekündigt. Der Drache ist dann im Düsterwald unterwegs und greift die
+Ritter in unregelmäßigen Abständen an.<br />
+Solltest du Thorium Pfeile besitzen und diese angelegt haben, hast du
+jedes Mal, wenn der Drache angreift, die Möglichkeit, auf ihn zu
+schießen. Thorium Pfeile sind die einzige Waffe, die die massiven
+Drachenschuppen durchdringen und dem Drachen so nach und nach Schaden
+zufügen kann. Manchmal erhältst du außerdem eine Drachenschuppe, wenn du
+den Drachen an einer entsprechenden Stelle mit deinem Thorium Pfeil
+getroffen hast.</p>
+<h3 id="drachenhöhle">Drachenhöhle</h3>
+<p>Wenn der Drache ausreichend im Düsterwald mit Thorium Pfeilen
+verletzt wurde, zieht er sich in die Drachenhöhle zurück. Alle Ritter,
+die ein Schuppenschild besitzen und dieses angelegt haben, können dann
+die Drachenhöhle betreten, um gegen den Drachen zu kämpfen und zu
+versuchen, ihn zu besiegen. Schuppenschilder werden unter anderem aus
+den Drachenschuppen hergestellt, die du im Düsterwald bei
+Drachenangriffen erbeuten kannst. Außerdem benötigst du den
+Schuppenschild Bauplan, bevor du den Gegenstand an der Werkbank
+herstellen kannst.<br />
+Um zur Drachenhöhle zu gelangen, kannst du jederzeit “Drachenhöhle”
+sagen. Du erhältst auch eine Ankündigung im Skill, wenn der Drache sich
+dorthin zurückgezogen hat. Selbst wenn der Drache aber nicht in der
+Höhle sein sollte, kannst du diese betreten. Du hörst dann einen
+Hinweis, dass die Höhle im Augenblick verlassen ist.</p>
+<p><em>TIPP</em>: Solange du mehr als ein Schuppenschild besitzt und
+angelegt hast, kannst du während des Kampfes gegen den Drachen
+möglicherweise ein Drachen-Ei finden.</p>
+<p>Derjenige, der den Drachen im Kampf besiegen kann, erhält eine
+ansehnliche Belohnung und einen Bauplan für einen Drachensattel.</p>
+<h3 id="drachennest-und-drachenaufzucht">Drachennest und
+Drachenaufzucht</h3>
+<p>Das Drachennest ist der Ort am Drachenfels, an dem du deinen eigenen
+Drachen aufziehen kannst. Drachen sind sehr mächtig und können dir im
+Kampf und bei der Jagd im Düsterwald eine große Hilfe sein. Sie
+verschlingen aber auch Unmengen an Nahrung, weshalb du dir gut überlegen
+solltest, ob und wann du einen Drachen aufziehen möchtest.</p>
+<p>Um mit der Drachenaufzucht zu beginnen, benötigst du zuerst ein
+Drachen-Ei. Dieses kannst du in der Drachenhöhle finden, von anderen
+Spieler gegen Ressourcen tauschen (Handel) oder sehr selten in einer
+Schatztruhe finden.<br />
+Wenn du ein Drachen-Ei im Rucksack hast, kannst du einfach “Drachennest”
+sagen. Du wirst dann gefragt, ob du das Ei in ein freies Nest legen
+möchtest.<br />
+Nachdem du das Ei in das Nest gelegt hast, solltest du regelmäßig am
+Drachennest vorbeischauen und das Ei mit einem Wolfsfell bedecken, um es
+warm zu halten. Nur so kannst du es ausbrüten. Im Schnitt dauert das
+Ausbrüten rund drei bis vier Tage und du benötigst mindestens fünf
+Wolfsfelle.<br />
+Sobald dein Drache geschlüpft ist, solltest du ihn regelmäßig füttern.
+Beachte, dass der Drache, je größer er wird, auch umso mehr Futter
+braucht. Besonders empfehlenswert als Futtermittel ist das Drachenmahl,
+da dieses den Drachen besonders im ausgewachsenen Zustand recht lange
+satt hält. Es eignen sich aber auch sonst alle Nahrungsmittel, die auch
+dein Ritter essen kann, besonders begehrt sind aber Ork- und
+Wildschweinfleisch.</p>
+<p>Wenn dein Drache ausgewachsen ist, kann er auch in höhere Level
+aufsteigen. Das Level deines Drachen entscheidet darüber, wie viel
+Schaden er im Kampf bei einem Gegner anrichtet, sollte er dir zur Hilfe
+eilen. Ab Level 7 besteht zudem die Möglichkeit, dem Drachen einen
+Sattel anzulegen, um mit ihm im Düsterwald zu fliegen.<br />
+Das Level deines Drachen erhöht sich ganz automatisch, wenn du ihn
+ausreichend fütterst. Maximal kann er bis auf Level 10 aufsteigen.<br />
+<em>WICHTIG</em>: Solltest du deinen Drachen länger als 24 Stunden nicht
+füttern, fliegt er davon. Es besteht dann auch keine Möglichkeit mehr,
+ihn zurückzuholen. Stattdessen müsstest du dann erneut ein Drachen-Ei
+ausbrüten und einen neuen Drachen aufziehen. Fütterst du den Drachen
+nicht ausreichend genug, kann er auch im Level sinken, ehe er
+schlussendlich davonfliegt.</p>
+<h4
+id="vor--und-nachteile-mit-dem-drachensattel-bei-der-jagd-im-düsterwald">Vor-
+und Nachteile mit dem Drachensattel bei der Jagd im Düsterwald</h4>
+<p>Wenn du einen Drachensattel hast und dieser angelegt ist, fliegt dein
+Ritter automatisch auf dem Drachen, wenn du “Düsterwald” sagst. Die Jagd
+mit einem Drachen bringt dir folgende Vorteile:</p>
+<ul>
+<li>Deutlich schnelleres Aufspüren von Orks</li>
+<li>Drache kann mehrere Orks auf einmal verbrennen</li>
+<li>Drache frisst im Düsterwald manchmal Orks, um seinen Hunger selbst
+etwas zu stillen. Dadurch benötigst du unter Umständen weniger Nahrung
+für ihn.</li>
+<li>Du bleibst bei einem Drachenangriff verschont</li>
+</ul>
+<p>Trotz der Vorteile, die dir der Drache im Düsterwald bringt, gibt es
+auch einige Nachteile:</p>
+<ul>
+<li>Du findest keine Gegenstände im Wald</li>
+<li>Du findest keine Gegenstände bei erledigten Orks</li>
+<li>Du kannst keine Drachenschuppen bei einem Drachenangriff erbeuten,
+da du vom Drachen im Wald nicht angegriffen wirst</li>
+</ul>
+<h4 id="vorteile-des-drachen-im-kampf">Vorteile des Drachen im
+Kampf</h4>
+<p>Wie bereits erwähnt kann der Drache dir manchmal im Kampf zur Hilfe
+kommen. Wann dies geschieht, kannst du nicht beeinflussen.<br />
+Sollte dein Drache in einem Kampf erscheinen und sein Feuer den Gegner
+erfassen, richtet dieses je nach Level zwischen 1,5- und 15-fachen
+Schaden an. Jedes Level deines Drachen erhöht die Multiplikation deines
+regulären Schadens somit um 1,5.</p>
+<h2 id="schloss">Schloss</h2>
+<p>Das Schloss ist die Residenz des Königs. Nur wenn du eine Einladung
+hast, kannst du das Schloss auch betreten. Sage “Schloss”, um zum
+Schloss zu gelangen. Solltest du keine Einladung haben, wirst du
+entsprechend abgewiesen.<br />
+Einladungen des Königs kannst du für herausragende Leistungen zufällig
+im Spiel erhalten. Welche Leistungen der König würdigt und als besonders
+ansieht, ist nicht bekannt. Du wirst jedoch im Skill darauf hingewiesen,
+wenn du eine Einladung erhältst.<br />
+Ob du zurzeit eine Einladung hast, kannst du überprüfen, wenn du
+“Schloss” sagst und dir Einlass geboten wird.</p>
+<h1 id="regelmäßige-veranstaltungen-im-spiel">Regelmäßige
+Veranstaltungen im Spiel</h1>
+<p>Jede Woche finden unterschiedliche Veranstaltungen im Spiel statt.
+Einige davon hast du bereits während der Erklärung der zentralen
+Spielelemente kennengelernt. Nachfolgend findest du eine Übersicht über
+alle Veranstaltungen in RitterManager sowie eine kurze Erklärung
+dazu.</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Wochentag</th>
+<th>Veranstaltung</th>
+<th>Kurzbeschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Montag</td>
+<td>Jagdturnier-Tag</td>
+<td>Jede Stunde ein Jagdturnier mit doppelt so hoher Teilnahmegebühr im
+Vergleich zu anderen Tagen</td>
+</tr>
+<tr class="even">
+<td>Dienstag</td>
+<td>Jahrmarkt</td>
+<td>Prüfe dein Glück am Rad der Entscheidung und gewinne tolle
+Preise</td>
+</tr>
+<tr class="odd">
+<td>Mittwoch</td>
+<td>Kampfturnier-Tag</td>
+<td>Jede Stunde ein Kampfturnier mit doppelt so hohen Teilnahmegebühren
+im Vergleich zu anderen Tagen</td>
+</tr>
+<tr class="even">
+<td>Mittwoch</td>
+<td>Kampfklassenauswertung</td>
+<td>Zuweisung deiner Kampfklasse</td>
+</tr>
+<tr class="odd">
+<td>Donnerstag</td>
+<td>Doppel-Donnerstag</td>
+<td>Doppelt so viele Erfahrungspunkte im Kampf und bei der Jagd im
+Düsterwald, mehr Geschenke vom König bei gewonnenen Kämpfen und mehr
+Ruhmpunkte bei gewonnenen Kämpfen</td>
+</tr>
+<tr class="even">
+<td>Freitag</td>
+<td>Anmeldung für die Ritterspiele</td>
+<td>Melde deinen Ritter für eine der drei Gilden an, um am Samstag die
+Ritterspiele zu bestreiten</td>
+</tr>
+<tr class="odd">
+<td>Samstag</td>
+<td>Ritterspiele</td>
+<td>Sammle so viel Ruhm wie möglich und verhilf deiner Gilde zum
+Sieg</td>
+</tr>
+<tr class="even">
+<td>Sonntag</td>
+<td>Provinzkampf</td>
+<td>Kämpfe zusammen mit deinem Orden um eine Provinz</td>
+</tr>
+</tbody>
+</table>
+<h1 id="übersicht-aller-gegenstände">Übersicht aller Gegenstände</h1>
+<p>Nachfolgend findest du eine Übersicht über die verfügbaren
+Gegenstände und deren Effekt:</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Gegenstand</th>
+<th>Effekt</th>
+<th>Nutzungsart</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Freilos</td>
+<td>Kann jeden Dienstag auf dem Jahrmarkt zum Drehen am Rad der
+Entscheidung eingesetzt werden</td>
+<td>Wird beim Drehen verbraucht</td>
+</tr>
+<tr class="even">
+<td>Silberpfeil</td>
+<td>Munition im Düsterwald</td>
+<td>Wird bei der Jagd im Düsterwald verbraucht, wenn keine andere
+Munition angelegt ist</td>
+</tr>
+<tr class="odd">
+<td>Provinzmünze</td>
+<td>Teilnahme am Provinzkampf</td>
+<td>Wird pro Provinzkampf verbraucht</td>
+</tr>
+<tr class="even">
+<td>Apfel</td>
+<td>+15 Energie</td>
+<td>Essen</td>
+</tr>
+<tr class="odd">
+<td>Waldpilz</td>
+<td>Stellt bei Bedarf 10 % der Lebenspunkte im Düsterwald wieder
+her</td>
+<td>Muss zur Nutzung angelegt sein / wird verbraucht</td>
+</tr>
+<tr class="even">
+<td>Silvester Rakete</td>
+<td>+2 Diamanten</td>
+<td>Wird beim Benutzen verbraucht</td>
+</tr>
+<tr class="odd">
+<td>Thorium Splitter</td>
+<td>Wird zur Herstellung anderer Gegenstände an der Werkbank
+benötigt</td>
+<td>Wird beim Herstellen von Gegenständen verbraucht</td>
+</tr>
+<tr class="even">
+<td>Apfelkuchen</td>
+<td>+200 Energie</td>
+<td>Essen</td>
+</tr>
+<tr class="odd">
+<td>Thorium Pfeil</td>
+<td>Durchdringt Drachenschuppen beim Drachenangriff im Düsterwald</td>
+<td>Muss zur Nutzung angelegt sein / wird verbraucht</td>
+</tr>
+<tr class="even">
+<td>Ork Fleisch</td>
+<td>-25% auf alle Werte deines Ritters sowie Material für die
+Herstellung von anderen Nahrungsmitteln</td>
+<td>Essen / Wird beim Herstellen von Gegenständen verbraucht</td>
+</tr>
+<tr class="odd">
+<td>Portion Gebratene Pilze</td>
+<td>Stellt bei Bedarf 75 % der Lebenspunkte im Düsterwald wieder
+her</td>
+<td>Muss zur Nutzung angelegt sein / wird verbraucht</td>
+</tr>
+<tr class="even">
+<td>Stück Wildschwein Fleisch</td>
+<td>+350-400 Lebenspunkte während eines Kampfes sowie Material zur
+Herstellung von anderen Gegenständen</td>
+<td>Wird im Kampf verbraucht (Wenn angelegt) / Wird bei der Herstellung
+von Gegenständen verbraucht</td>
+</tr>
+<tr class="odd">
+<td>Kleine Mahlzeit</td>
+<td>+500 Lebenspunkte für 15 Minuten</td>
+<td>Essen</td>
+</tr>
+<tr class="even">
+<td>Wolfsköder</td>
+<td>Lockt Wölfe bei der Jagd im Düsterwald an</td>
+<td>Muss zur Nutzung angelegt sein / wird verbraucht</td>
+</tr>
+<tr class="odd">
+<td>Wolfsfell</td>
+<td>Material zur Herstellung anderer Gegenstände / Warmhalten des
+Drachen-Eis</td>
+<td>Wird beim Herstellen anderer Gegenstände oder Legen auf ein
+Drachenei verbraucht</td>
+</tr>
+<tr class="even">
+<td>Wolfsmantel</td>
+<td>Orks können dich nicht mehr sehen und dein Ritter kann sich auf das
+Heilen von verwundeten Rittern sowie das Sammeln von Gegenständen im
+Düsterwald konzentrieren</td>
+<td>Muss zur Nutzung angelegt sein</td>
+</tr>
+<tr class="odd">
+<td>Wurfaxt</td>
+<td>Munition im Düsterwald, die mind. den 2-fachen Schaden bei einem
+Treffer erzielt</td>
+<td>Muss zur Nutzung angelegt sein / wird verbraucht</td>
+</tr>
+<tr class="even">
+<td>Silberbarren</td>
+<td>Material zur Herstellung anderer Gegenstände</td>
+<td>Wird beim Herstellen anderer Gegenstände verbraucht</td>
+</tr>
+<tr class="odd">
+<td>Große Mahlzeit</td>
+<td>+1200 Lebenspunkte für 15 Minuten</td>
+<td>Essen</td>
+</tr>
+<tr class="even">
+<td>Thorium Speer</td>
+<td>Durchschlägt die Rüstung des Gegners im Kampf bei einem Treffer
+vollständig und richtet den mit deiner Stärke maximal möglichen Schaden
+an</td>
+<td>Muss zur Nutzung angelegt sein / wird verbraucht</td>
+</tr>
+<tr class="odd">
+<td>Drachenschuppe</td>
+<td>Material zur Herstellung anderer Gegenstände</td>
+<td>Wird beim Herstellen anderer Gegenstände verbraucht</td>
+</tr>
+<tr class="even">
+<td>Stück Drachenfleisch</td>
+<td>Keine</td>
+<td>Keine</td>
+</tr>
+<tr class="odd">
+<td>Osterei</td>
+<td>Enthält Überraschungen</td>
+<td>Wird beim Benutzen verbraucht</td>
+</tr>
+<tr class="even">
+<td>Schuppenschild</td>
+<td>Wird zum Betreten der Drachenhöhle verwendet</td>
+<td>Muss zur Nutzung angelegt sein / wird verbraucht</td>
+</tr>
+<tr class="odd">
+<td>Drachen Ei</td>
+<td>Kann zum Aufziehen eines Drachen in ein Drachennest gelegt
+werden</td>
+<td>Wird ins Drachennest gelegt. Benötigt mind. 5 Wolfsfelle für
+erfolgreiches Ausbrüten</td>
+</tr>
+<tr class="even">
+<td>Drachensattel</td>
+<td>Ermöglicht, mit deinem Drachen im Düsterwald zu fliegen, sofern
+dieser es zulässt</td>
+<td>Muss zur Nutzung angelegt sein</td>
+</tr>
+<tr class="odd">
+<td>Himbeere</td>
+<td>+5 Genauigkeit im Düsterwald für 30 Minuten</td>
+<td>Essen</td>
+</tr>
+<tr class="even">
+<td>Brombeere</td>
+<td>+5 Durchschlagskraft im Düsterwald für 30 Minuten</td>
+<td>Essen</td>
+</tr>
+<tr class="odd">
+<td>Beereneintopf</td>
+<td>+50 Durchschlagskraft, Genauigkeit und Spuren Lesen im Düsterwald
+für 30 Minuten</td>
+<td>Essen</td>
+</tr>
+<tr class="even">
+<td>Drachenmahl</td>
+<td>Hält den Drachen effektiver satt</td>
+<td>Drachen im Drachennest füttern</td>
+</tr>
+<tr class="odd">
+<td>Honigwabe</td>
+<td>+5% Chance auf Einsetzen von Jagdfähigkeiten</td>
+<td>Essen</td>
+</tr>
+<tr class="even">
+<td>Heilkraut</td>
+<td>Heilt verwundete Ritter</td>
+<td>Muss zur Nutzung angelegt sein / wird verbraucht</td>
+</tr>
+<tr class="odd">
+<td>Königliche Medaille</td>
+<td>Ehrt die Mitglieder des Gewinner-Ordens sowie die Top 5 auf der
+Kampf- und Jagd-Rangliste</td>
+<td>Keine</td>
+</tr>
+<tr class="even">
+<td>Schlüssel</td>
+<td>Öffnet verschlossene Behältnisse und kann beim Erledigen von
+Ork-Hexenmeistern im Düsterwald gefunden werden</td>
+<td>Wird bei der Benutzung mit entsprechenden anderen Gegenständen (z.B.
+Schatztruhen) verbraucht</td>
+</tr>
+<tr class="odd">
+<td>Schatztruhe</td>
+<td>Hält Überraschungen bereit und kann vom König nach einer Einladung
+ins Schloss überreicht werden</td>
+<td>Muss mit einem Schlüssel geöffnet werden</td>
+</tr>
+<tr class="even">
+<td>Salat der Auferstehung</td>
+<td>Information steht noch aus</td>
+<td>Information steht noch aus</td>
+</tr>
+<tr class="odd">
+<td>Möhre</td>
+<td>+5 Spuren Lesen</td>
+<td>Essen</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>
