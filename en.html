@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
@@ -15,7 +16,165 @@
     <h1 class="title">Knight Manager Tutorial</h1>
     <p class="subtitle">Tutorial for beginners and reference for experienced Knight Managers</p>
   </header>
-  
+
+  <nav id="TOC" role="doc-toc">
+    <ul>
+      <li><a href="#welcome-to-knight-manager-tutorial" id="toc-welcome-to-knight-manager-tutorial">Welcome to Knight
+          Manager Tutorial</a>
+        <ul>
+          <li><a href="#what-is-knight-manager" id="toc-what-is-knight-manager">What is Knight Manager?</a></li>
+          <li><a href="#creating-knights" id="toc-creating-knights">Creating Knights</a></li>
+          <li><a href="#linking-knights-with-your-amazon-account"
+              id="toc-linking-knights-with-your-amazon-account">Linking Knights with your Amazon Account</a></li>
+        </ul>
+      </li>
+      <li><a href="#fundamentals" id="toc-fundamentals">Fundamentals</a>
+        <ul>
+          <li><a href="#attributes-of-your-knight" id="toc-attributes-of-your-knight">Attributes of your Knight</a>
+            <ul>
+              <li><a href="#combat-attributes" id="toc-combat-attributes">Combat Attributes</a></li>
+              <li><a href="#hunting-attributes" id="toc-hunting-attributes">Hunting Attributes</a></li>
+              <li><a href="#special-abilities" id="toc-special-abilities">Special Abilities</a></li>
+              <li><a href="#bonus-attributes" id="toc-bonus-attributes">Bonus Attributes</a></li>
+              <li><a href="#combat-class" id="toc-combat-class">Combat Class</a></li>
+            </ul>
+          </li>
+          <li><a href="#other-important-building-blocks" id="toc-other-important-building-blocks">Other Important
+              Building Blocks</a>
+            <ul>
+              <li><a href="#seasons" id="toc-seasons">Seasons</a></li>
+              <li><a href="#leaderboard" id="toc-leaderboard">Leaderboard</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><a href="#core-gameplay-elements" id="toc-core-gameplay-elements">Core Gameplay Elements</a>
+        <ul>
+          <li><a href="#adventures" id="toc-adventures">Adventures</a>
+            <ul>
+              <li><a href="#prestige-mode" id="toc-prestige-mode">Prestige Mode</a></li>
+            </ul>
+          </li>
+          <li><a href="#combat" id="toc-combat">Combat</a>
+            <ul>
+              <li><a href="#structure-of-a-battle" id="toc-structure-of-a-battle">Structure of a Battle</a></li>
+              <li><a href="#king's-gifts" id="toc-king's-gifts">King's Gifts</a></li>
+              <li><a href="#combat-modes" id="toc-combat-modes">Combat Modes</a></li>
+              <li><a href="#quick-battle" id="toc-quick-battle">Quick Battle</a></li>
+              <li><a href="#auto-battle" id="toc-auto-battle">Auto Battle</a></li>
+            </ul>
+          </li>
+          <li><a href="#blacksmith" id="toc-blacksmith">Blacksmith</a </li>
+          <li><a href="#shop" id="toc-shop">Shop</a>
+            <ul>
+              <li><a href="#combat-abilities" id="toc-combat-abilities">Combat Abilities</a></li>
+              <li><a href="#combat-bonus-attributes" id="toc-combat-bonus-attributes">Combat Bonus Attributes</a></li>
+            </ul>
+          </li>
+          <li><a href="#player-search" id="toc-player-search">Player Search</a></li>
+          <li><a href="#tag-team" id="toc-tag-team">Tag Team</a></li>
+          <li><a href="#backpack" id="toc-backpack">Backpack</a>
+            <ul>
+              <li><a href="#special-considerations-for-food" id="toc-special-considerations-for-food">Special
+                  Considerations for Food</a></li>
+            </ul>
+          </li>
+          <li><a href="#castle-garden" id="toc-castle-garden">Castle Garden</a></li>
+          <li><a href="#knight-games" id="toc-knight-games">Knight Games</a>
+            <ul>
+              <li><a href="#awards-ceremony" id="toc-awards-ceremony">Awards Ceremony</a></li>
+            </ul>
+          </li>
+          <li><a href="#fairground" id="toc-fairground">Fairground</a></li>
+          <li><a href="#gloomy-forest" id="toc-gloomy-forest">Gloomy Forest</a>
+            <ul>
+              <li><a href="#the-orc-captain" id="toc-the-orc-captain">The Orc Captain</a></li>
+              <li><a href="#life-points-in-the-forest" id="toc-life-points-in-the-forest">Life Points in the Forest</a>
+              </li>
+              <li><a href="#healing-knights" id="toc-healing-knights">Healing Knights</a></li>
+              <li><a href="#the-night-in-the-gloomy-forest" id="toc-the-night-in-the-gloomy-forest">The Night in the
+                  Gloomy Forest</a></li>
+              <li><a href="#orc-plagues" id="toc-orc-plagues">Orc Plagues</a></li>
+              <li><a href="#wolf-hunt" id="toc-wolf-hunt">Wolf Hunt</a></li>
+              <li><a href="#hunting-tournaments" id="toc-hunting-tournaments">Hunting Tournaments</a></li>
+              <li><a href="#overview-of-all-creatures-in-the-gloomy-forest"
+                  id="toc-overview-of-all-creatures-in-the-gloomy-forest">Overview of All Creatures in the Gloomy
+                  Forest</a></li>
+            </ul>
+          </li>
+          <li><a href="#tavern" id="toc-tavern">Tavern</a>
+            <ul>
+              <li><a href="#counter" id="toc-counter">Counter</a></li>
+              <li><a href="#playing-cards" id="toc-playing-cards">Playing Cards</a></li>
+            </ul>
+          </li>
+          <li><a href="#black-tower" id="toc-black-tower">Black Tower</a>
+            <ul>
+              <li><a href="#attack-on-the-kingdom" id="toc-attack-on-the-kingdom">Attackon the Kingdom</a></li>
+            </ul>
+          </li>
+          <li><a href="#arrow-workshop" id="toc-arrow-workshop">Arrow Workshop</a></li>
+          <li><a href="#hunting-lodge" id="toc-hunting-lodge">Hunting Lodge</a>
+            <ul>
+              <li><a href="#hunting-abilities" id="toc-hunting-abilities">Hunting Abilities</a></li>
+              <li><a href="#hunting-bonus-attributes" id="toc-hunting-bonus-attributes">Hunting Bonus Attributes</a>
+              </li>
+            </ul>
+          </li>
+          <li><a href="#mailbox" id="toc-mailbox">Mailbox</a>
+            <ul>
+              <li><a href="#sending-gifts" id="toc-sending-gifts">Sending Gifts</a></li>
+              <li><a href="#writing-letters" id="toc-writing-letters">Writing Letters</a></li>
+            </ul>
+          </li>
+          <li><a href="#trading" id="toc-trading">Trading</a>
+            <ul>
+              <li><a href="#proposing-trade" id="toc-proposing-trade">Proposing Trade</a></li>
+              <li><a href="#marketplace" id="toc-marketplace">Marketplace</a></li>
+            </ul>
+          </li>
+          <li><a href="#combat-tournaments" id="toc-combat-tournaments">Combat Tournaments</a>
+            <ul>
+              <li><a href="#awards-ceremony-1" id="toc-awards-ceremony-1">Awards Ceremony</a></li>
+            </ul>
+          </li>
+          <li><a href="#orders" id="toc-orders">Orders</a>
+            <ul>
+              <li><a href="#special-achievements-for-more-order-points"
+                  id="toc-special-achievements-for-more-order-points">Special Achievements for more Order Points</a>
+              </li>
+              <li><a href="#order-hall-and-upgrades" id="toc-order-hall-and-upgrades">Order Hall and Upgrades</a></li>
+              <li><a href="#season-transition" id="toc-season-transition">Season Transition</a></li>
+            </ul>
+          </li>
+          <li><a href="#provincial-battle" id="toc-provincial-battle">Provincial Battle</a>
+            <ul>
+              <li><a href="#flow-of-provincial-battle" id="toc-flow-of-provincial-battle">Flow of Provincial Battle</a>
+              </li>
+              <li><a href="#awards-ceremony-2" id="toc-awards-ceremony-2">Awards Ceremony</a></li>
+            </ul>
+          </li>
+          <li><a href="#workshop" id="toc-workshop">Workshop</a>
+            <ul>
+              <li><a href="#blueprints" id="toc-blueprints">Blueprints</a></li>
+              <li><a href="#recipes" id="toc-recipes">Recipes</a></li>
+            </ul>
+          </li>
+          <li><a href="#dragon's-rock" id="toc-dragon's-rock">Dragon's Rock</a>
+            <ul>
+              <li><a href="#peak" id="toc-peak">Peak</a></li>
+              <li><a href="#dragon's-cave" id="toc-dragon's-cave">Dragon's Cave</a></li>
+              <li><a href="#dragon's-nest-and-dragon-breeding" id="toc-dragon's-nest-and-dragon-breeding">Dragon's Nest
+                  and Dragon Breeding</a></li>
+            </ul>
+          </li>
+          <li><a href="#castle" id="toc-castle">Castle</a></li>
+        </ul>
+      </li>
+      <li><a href="#regular-in-game-events" id="toc-regular-in-game-events">Regular In-Game Events</a></li>
+      <li><a href="#overview-of-all-items" id="toc-overview-of-all-items">Overview of All Items</a></li>
+    </ul>
+  </nav>
 </body>
 
 </html>
