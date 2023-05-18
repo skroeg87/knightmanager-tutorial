@@ -11,8 +11,8 @@
 </head>
 <body>
   <h1>Knight Manager Tutorial</h1>
-  <p>German Version: <a href="/de.html">Go to German Version</a> (last change: 2023-05-18)</p>
-  <p>English Version: <a href="/en.html">Go to English Version</a> (in progress, last change: 2023-05-18)</p>
+  <p>German Version: <a href="/de.html">Go to German Version</a> (last change: <?php echo date('Y-m-d', filemtime('de.html')); ?>)</p>
+  <p>English Version: <a href="/en.html">Go to English Version</a> (in progress, last change: <?php echo date('Y-m-d', filemtime('en.html')); ?>)</p>
   <h1>Contribute</h1>
   <p>This tutorial can be expanded and kept up to date on GitHub.</p>
   <p>If you're interested in contributing to the tutorial, please visit the following link on GitHub:</p>
